@@ -201,49 +201,37 @@
       color: #D8B4FE;
     }
 
-    /* Hero con imagen de fondo foto1 + respaldo visual garantizado */
+    /* Hero con imagen de fondo foto1 */
     .hero {
       position: relative;
       padding: 88px 0 104px;
       overflow: hidden;
-      background-color: var(--obsidian);
+      background:
+        radial-gradient(circle at 50% 30%, rgba(147, 51, 234, 0.28) 0%, rgba(10, 8, 18, 0.92) 70%),
+        var(--obsidian);
     }
     .hero-bg-layer {
       position: absolute;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
     }
-    .hero-bg-img {
+    .hero-bg-photo {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 22%;
-      opacity: 0.38;
-      filter: saturate(1.2) contrast(1.06);
-      display: none;
-    }
-    .hero-bg-img.active {
-      display: block;
-    }
-    .hero-fallback-art {
-      width: 100%;
-      height: 100%;
-      opacity: 0.34;
-    }
-    .hero-fallback-art.hidden {
-      display: none;
+      object-position: center 20%;
+      opacity: 0.42;
+      filter: saturate(1.18) contrast(1.06);
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 50% 35%, rgba(124, 58, 237, 0.16) 0%, rgba(10, 8, 18, 0.84) 74%),
-        linear-gradient(180deg, rgba(10, 8, 18, 0.48) 0%, rgba(10, 8, 18, 0.8) 72%, var(--obsidian) 100%);
+        radial-gradient(circle at 50% 35%, rgba(124, 58, 237, 0.14) 0%, rgba(10, 8, 18, 0.82) 75%),
+        linear-gradient(180deg, rgba(10, 8, 18, 0.45) 0%, rgba(10, 8, 18, 0.78) 72%, var(--obsidian) 100%);
       z-index: 1;
       pointer-events: none;
     }
@@ -261,7 +249,7 @@
       line-height: 1.08;
       font-weight: 700;
       color: var(--beige);
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
     }
     .hero .sub-badge {
       display: inline-block;
@@ -684,51 +672,9 @@
 
   <main>
     <section class="hero">
-      <!-- Fondo con la ilustración de la loctician de dreads violetas ("foto1") -->
+      <!-- Fondo con la imagen foto1 -->
       <div class="hero-bg-layer" aria-hidden="true">
-        <img id="heroFoto1Img" class="hero-bg-img" alt="" />
-        <svg id="heroFallbackSvg" class="hero-fallback-art" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="neonGlow" cx="50%" cy="42%" r="55%">
-              <stop offset="0%" stop-color="#9333EA" stop-opacity="0.45" />
-              <stop offset="55%" stop-color="#4C1D95" stop-opacity="0.22" />
-              <stop offset="100%" stop-color="#0A0812" stop-opacity="0" />
-            </radialGradient>
-            <linearGradient id="locGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#C084FC" />
-              <stop offset="55%" stop-color="#7E22CE" />
-              <stop offset="100%" stop-color="#3B0764" />
-            </linearGradient>
-          </defs>
-          <rect width="1200" height="700" fill="#0A0812" />
-          <circle cx="600" cy="300" r="360" fill="url(#neonGlow)" />
-          <!-- Silueta estilizada de loctician con dreads violetas -->
-          <g transform="translate(600, 340)">
-            <!-- Dreads cayendo a los lados -->
-            <path d="M-95 -60 C-155 10, -165 140, -135 260" stroke="url(#locGrad)" stroke-width="22" stroke-linecap="round" fill="none" />
-            <path d="M-75 -75 C-125 20, -130 150, -105 275" stroke="#9333EA" stroke-width="20" stroke-linecap="round" fill="none" />
-            <path d="M-55 -85 C-90 30, -95 160, -75 285" stroke="url(#locGrad)" stroke-width="20" stroke-linecap="round" fill="none" />
-            <path d="M95 -60 C155 10, 165 140, 135 260" stroke="url(#locGrad)" stroke-width="22" stroke-linecap="round" fill="none" />
-            <path d="M75 -75 C125 20, 130 150, 105 275" stroke="#9333EA" stroke-width="20" stroke-linecap="round" fill="none" />
-            <path d="M55 -85 C90 30, 95 160, 75 285" stroke="url(#locGrad)" stroke-width="20" stroke-linecap="round" fill="none" />
-            <!-- Corona de dreads superiores -->
-            <circle cx="-65" cy="-95" r="24" fill="url(#locGrad)" />
-            <circle cx="-22" cy="-112" r="26" fill="#A855F7" />
-            <circle cx="22" cy="-112" r="26" fill="#A855F7" />
-            <circle cx="65" cy="-95" r="24" fill="url(#locGrad)" />
-            <!-- Clip verde lima característico -->
-            <rect x="-86" y="-84" width="28" height="10" rx="5" transform="rotate(-18 -72 -79)" fill="#A6C261" />
-            <!-- Rostro minimalista neón -->
-            <ellipse cx="0" cy="-35" rx="54" ry="62" fill="#2A1647" stroke="#D8B4FE" stroke-width="2.5" />
-            <circle cx="-18" cy="-38" r="6" fill="#F4F0DD" />
-            <circle cx="18" cy="-38" r="6" fill="#F4F0DD" />
-            <circle cx="-18" cy="-38" r="3" fill="#9333EA" />
-            <circle cx="18" cy="-38" r="3" fill="#9333EA" />
-            <path d="M-12 -14 Q0 -4 12 -14" stroke="#D8B4FE" stroke-width="2.5" fill="none" stroke-linecap="round" />
-            <!-- Hombros / delantal de taller -->
-            <path d="M-110 130 Q0 75 110 130 L135 320 L-135 320 Z" fill="#17102B" stroke="#7C3AED" stroke-width="2" />
-          </g>
-        </svg>
+        <img src="foto1.png" alt="" class="hero-bg-photo" id="heroBgPhoto" />
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -934,27 +880,22 @@
   </div>
 
   <script>
-    // 1. Detección de "foto1" (con o sin extensión) y reemplazo automático del fondo de respaldo
+    // 1. Cargar foto1 probando extensiones comunes de forma directa
     (function () {
-      const imgEl = document.getElementById('heroFoto1Img');
-      const fallbackSvg = document.getElementById('heroFallbackSvg');
-      const candidates = ['foto1.png', 'foto1.jpg', 'foto1.jpeg', 'foto1.webp', 'foto1'];
-      let idx = 0;
+      const heroPhoto = document.getElementById('heroBgPhoto');
+      const sources = ['foto1.png', 'foto1.jpg', 'foto1.jpeg', 'foto1.webp', 'foto1'];
+      let i = 0;
 
-      function tryNext() {
-        if (idx >= candidates.length) return;
-        const current = candidates[idx++];
-        const probe = new Image();
-        probe.onload = function () {
-          imgEl.src = current;
-          imgEl.classList.add('active');
-          if (fallbackSvg) fallbackSvg.classList.add('hidden');
-        };
-        probe.onerror = tryNext;
-        probe.src = current;
-      }
+      heroPhoto.onerror = function () {
+        i++;
+        if (i < sources.length) {
+          heroPhoto.src = sources[i];
+        } else {
+          heroPhoto.style.display = 'none';
+        }
+      };
 
-      tryNext();
+      heroPhoto.src = sources[0];
     })();
 
     // 2. Desbloqueo de la sección de Drive al pulsar "Pagar con Mercado Pago"
@@ -1007,10 +948,10 @@
 
       function resolveImage(slide, onLoaded) {
         const exts = ['.png', '.jpg', '.jpeg', '.webp', ''];
-        let i = 0;
+        let idx = 0;
         function next() {
-          if (i >= exts.length) return;
-          const candidate = slide.base + exts[i++];
+          if (idx >= exts.length) return;
+          const candidate = slide.base + exts[idx++];
           const testImg = new Image();
           testImg.onload = function () {
             slide.src = candidate;
