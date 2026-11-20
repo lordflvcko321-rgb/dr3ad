@@ -79,6 +79,30 @@
       font-weight: 600;
     }
 
+    /* Emojis flotantes en esquinas de los recuadros */
+    .emoji-box {
+      position: relative;
+    }
+    .corner-emoji {
+      position: absolute;
+      font-size: 1.55rem;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      z-index: 4;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 8px rgba(176, 38, 255, 0.45));
+      animation: floatEmoji 3.6s ease-in-out infinite;
+    }
+    .corner-emoji.tl { top: -14px; left: -10px; --rot: -12deg; }
+    .corner-emoji.tr { top: -14px; right: -10px; --rot: 12deg; animation-delay: 0.9s; }
+    .corner-emoji.bl { bottom: -14px; left: -10px; --rot: 10deg; animation-delay: 1.6s; }
+    .corner-emoji.br { bottom: -14px; right: -10px; --rot: -10deg; animation-delay: 2.2s; }
+
+    @keyframes floatEmoji {
+      0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)) scale(1); }
+      50% { transform: translateY(-6px) rotate(calc(var(--rot, 0deg) + 6deg)) scale(1.08); }
+    }
+
     /* Header sticky */
     .topbar {
       position: sticky;
@@ -150,10 +174,10 @@
       color: var(--celery);
       padding: 13px 26px;
       font-size: 1rem;
-      background: rgba(166, 194, 97, 0.05);
+      background: rgba(166, 194, 97, 0.08);
     }
     .btn-outline:hover {
-      background: rgba(166, 194, 97, 0.14);
+      background: rgba(166, 194, 97, 0.18);
       transform: translateY(-1px);
     }
     .btn-ig {
@@ -177,31 +201,49 @@
       color: #D8B4FE;
     }
 
-    /* Hero con imagen de fondo foto1 */
+    /* Hero con imagen de fondo foto1 + respaldo visual garantizado */
     .hero {
       position: relative;
       padding: 88px 0 104px;
       overflow: hidden;
       background-color: var(--obsidian);
     }
-    .hero-bg {
+    .hero-bg-layer {
       position: absolute;
       inset: 0;
-      background-image: url('foto1.png'), url('foto1.jpg'), url('foto1.webp'), url('foto1');
-      background-size: cover;
-      background-position: center 22%;
-      background-repeat: no-repeat;
-      opacity: 0.32;
-      filter: saturate(1.15) contrast(1.05);
       z-index: 0;
       pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      opacity: 0.38;
+      filter: saturate(1.2) contrast(1.06);
+      display: none;
+    }
+    .hero-bg-img.active {
+      display: block;
+    }
+    .hero-fallback-art {
+      width: 100%;
+      height: 100%;
+      opacity: 0.34;
+    }
+    .hero-fallback-art.hidden {
+      display: none;
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 50% 35%, rgba(124, 58, 237, 0.18) 0%, rgba(10, 8, 18, 0.86) 72%),
-        linear-gradient(180deg, rgba(10, 8, 18, 0.55) 0%, rgba(10, 8, 18, 0.82) 70%, var(--obsidian) 100%);
+        radial-gradient(circle at 50% 35%, rgba(124, 58, 237, 0.16) 0%, rgba(10, 8, 18, 0.84) 74%),
+        linear-gradient(180deg, rgba(10, 8, 18, 0.48) 0%, rgba(10, 8, 18, 0.8) 72%, var(--obsidian) 100%);
       z-index: 1;
       pointer-events: none;
     }
@@ -253,7 +295,7 @@
     /* Tarjetas de producto */
     .grid-2 {
       display: grid;
-      gap: 24px;
+      gap: 28px;
       grid-template-columns: 1fr;
       margin-top: 44px;
     }
@@ -277,6 +319,202 @@
     .card li + li { margin-top: 8px; }
     .card li::marker { color: var(--celery); }
 
+    /* Galería de trabajos / láminas */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+    }
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #1E1738 0%, #100C1E 100%);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--celery);
+      box-shadow: 0 12px 28px rgba(176, 38, 255, 0.28);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      text-align: center;
+      color: rgba(244, 240, 221, 0.65);
+    }
+    .gallery-placeholder .ph-icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 0 8px rgba(176, 38, 255, 0.5));
+    }
+    .gallery-placeholder .ph-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      color: var(--indigo);
+      text-transform: uppercase;
+    }
+    .gallery-placeholder .ph-hint {
+      font-size: 0.75rem;
+      color: rgba(244, 240, 221, 0.45);
+    }
+    .gallery-badge {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(10, 8, 18, 0.82);
+      border: 1px solid rgba(168, 138, 237, 0.45);
+      color: var(--celery);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.06em;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Lightbox / Modal de Galería */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(6, 4, 12, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox.open {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .lightbox-stage {
+      position: relative;
+      max-width: 860px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .lightbox-frame {
+      position: relative;
+      width: 100%;
+      max-height: 76vh;
+      aspect-ratio: 4 / 3;
+      background: var(--surface);
+      border: 1.5px solid rgba(168, 138, 237, 0.5);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 36px rgba(176, 38, 255, 0.25);
+    }
+    .lightbox-frame img {
+      max-width: 100%;
+      max-height: 76vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--beige);
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 110;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+    .lightbox-close:hover {
+      background: var(--violet);
+      transform: scale(1.08);
+    }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(10, 8, 18, 0.85);
+      border: 1px solid rgba(168, 138, 237, 0.55);
+      color: var(--celery);
+      font-size: 1.35rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.18s ease, transform 0.18s ease;
+      z-index: 105;
+    }
+    .lightbox-nav:hover {
+      background: var(--violet);
+      color: #fff;
+      transform: translateY(-50%) scale(1.08);
+    }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+    .lightbox-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 6px;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.06em;
+      color: var(--beige);
+    }
+    .lightbox-counter {
+      color: var(--celery);
+      font-size: 0.95rem;
+    }
+
     /* Dos columnas: Para quién es / Lo que no es */
     .two-col {
       display: grid;
@@ -289,7 +527,7 @@
     .two-col li + li { margin-top: 12px; }
     .two-col li::marker { color: var(--celery); }
 
-    /* Caja de Compra */
+    /* Caja de Compra y Desbloqueo Post-MP */
     .buy-box {
       background: linear-gradient(180deg, #1D1636 0%, var(--surface) 100%);
       border: 2px solid rgba(168, 138, 237, 0.45);
@@ -309,7 +547,7 @@
     .price span { font-size: 1.4rem; color: var(--celery); }
 
     .steps {
-      margin-top: 40px;
+      margin-top: 36px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -322,10 +560,42 @@
     .steps li + li { margin-top: 10px; }
     .steps li::marker { color: var(--celery); font-weight: 700; }
     .steps a { color: var(--indigo); text-decoration: underline; }
-    .drive-block {
-      margin-top: 24px;
-      padding-top: 20px;
-      border-top: 1px dashed var(--border);
+
+    /* Sección de acceso a Drive oculta hasta iniciar pago en MP */
+    .unlock-panel {
+      display: none;
+      margin-top: 32px;
+      background: linear-gradient(180deg, #1E1838 0%, #130F24 100%);
+      border: 2px solid var(--celery);
+      border-radius: 18px;
+      padding: 32px 26px;
+      text-align: center;
+      box-shadow: 0 14px 40px rgba(166, 194, 97, 0.2);
+      animation: unlockPop 0.35s ease;
+    }
+    .unlock-panel.visible {
+      display: block;
+    }
+    @keyframes unlockPop {
+      from { opacity: 0; transform: translateY(14px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .unlock-panel h3 {
+      font-size: 1.5rem;
+      color: var(--celery);
+      margin-top: 6px;
+    }
+    .unlock-panel p {
+      margin-top: 10px;
+      color: rgba(244, 240, 221, 0.85);
+      font-size: 0.95rem;
+    }
+    .unlock-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
     }
 
     /* FAQ */
@@ -375,12 +645,10 @@
 
     @media (max-width: 480px) {
       .topbar .brand-logo { font-size: 1.35rem; }
-      .btn-ig span.ig-handle-full { display: none; }
       .btn-ig span.ig-handle-short::after { content: "IG"; }
     }
     @media (min-width: 481px) {
       .btn-ig span.ig-handle-short::after { content: "@lemonbarb3r"; }
-      .btn-ig span.ig-handle-full { display: none; }
     }
   </style>
 </head>
@@ -417,7 +685,51 @@
   <main>
     <section class="hero">
       <!-- Fondo con la ilustración de la loctician de dreads violetas ("foto1") -->
-      <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+      <div class="hero-bg-layer" aria-hidden="true">
+        <img id="heroFoto1Img" class="hero-bg-img" alt="" />
+        <svg id="heroFallbackSvg" class="hero-fallback-art" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="neonGlow" cx="50%" cy="42%" r="55%">
+              <stop offset="0%" stop-color="#9333EA" stop-opacity="0.45" />
+              <stop offset="55%" stop-color="#4C1D95" stop-opacity="0.22" />
+              <stop offset="100%" stop-color="#0A0812" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="locGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#C084FC" />
+              <stop offset="55%" stop-color="#7E22CE" />
+              <stop offset="100%" stop-color="#3B0764" />
+            </linearGradient>
+          </defs>
+          <rect width="1200" height="700" fill="#0A0812" />
+          <circle cx="600" cy="300" r="360" fill="url(#neonGlow)" />
+          <!-- Silueta estilizada de loctician con dreads violetas -->
+          <g transform="translate(600, 340)">
+            <!-- Dreads cayendo a los lados -->
+            <path d="M-95 -60 C-155 10, -165 140, -135 260" stroke="url(#locGrad)" stroke-width="22" stroke-linecap="round" fill="none" />
+            <path d="M-75 -75 C-125 20, -130 150, -105 275" stroke="#9333EA" stroke-width="20" stroke-linecap="round" fill="none" />
+            <path d="M-55 -85 C-90 30, -95 160, -75 285" stroke="url(#locGrad)" stroke-width="20" stroke-linecap="round" fill="none" />
+            <path d="M95 -60 C155 10, 165 140, 135 260" stroke="url(#locGrad)" stroke-width="22" stroke-linecap="round" fill="none" />
+            <path d="M75 -75 C125 20, 130 150, 105 275" stroke="#9333EA" stroke-width="20" stroke-linecap="round" fill="none" />
+            <path d="M55 -85 C90 30, 95 160, 75 285" stroke="url(#locGrad)" stroke-width="20" stroke-linecap="round" fill="none" />
+            <!-- Corona de dreads superiores -->
+            <circle cx="-65" cy="-95" r="24" fill="url(#locGrad)" />
+            <circle cx="-22" cy="-112" r="26" fill="#A855F7" />
+            <circle cx="22" cy="-112" r="26" fill="#A855F7" />
+            <circle cx="65" cy="-95" r="24" fill="url(#locGrad)" />
+            <!-- Clip verde lima característico -->
+            <rect x="-86" y="-84" width="28" height="10" rx="5" transform="rotate(-18 -72 -79)" fill="#A6C261" />
+            <!-- Rostro minimalista neón -->
+            <ellipse cx="0" cy="-35" rx="54" ry="62" fill="#2A1647" stroke="#D8B4FE" stroke-width="2.5" />
+            <circle cx="-18" cy="-38" r="6" fill="#F4F0DD" />
+            <circle cx="18" cy="-38" r="6" fill="#F4F0DD" />
+            <circle cx="-18" cy="-38" r="3" fill="#9333EA" />
+            <circle cx="18" cy="-38" r="3" fill="#9333EA" />
+            <path d="M-12 -14 Q0 -4 12 -14" stroke="#D8B4FE" stroke-width="2.5" fill="none" stroke-linecap="round" />
+            <!-- Hombros / delantal de taller -->
+            <path d="M-110 130 Q0 75 110 130 L135 320 L-135 320 Z" fill="#17102B" stroke="#7C3AED" stroke-width="2" />
+          </g>
+        </svg>
+      </div>
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="wrap center">
@@ -436,13 +748,16 @@
       </div>
     </section>
 
+    <!-- Qué incluye la compra -->
     <section class="section">
       <div class="wrap">
         <p class="eyebrow center">Contenido del pack</p>
         <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Qué incluye la compra</h2>
         <p class="center muted" style="margin-top:10px">Dos archivos PDF descargables, ambos incluidos en el mismo acceso.</p>
         <div class="grid-2">
-          <article class="card">
+          <article class="card emoji-box">
+            <span class="corner-emoji tl" aria-hidden="true">🥷</span>
+            <span class="corner-emoji br" aria-hidden="true">🔥</span>
             <p class="eyebrow">PDF 1 · Texto técnico</p>
             <h3>Manual Maestro</h3>
             <p>29 páginas en formato A4 con glosario exclusivo, herramientas, diagnóstico capilar, construcción, mantenimiento, reparación, cuidados, maduración, seguridad, errores, atención al cliente y anexos.</p>
@@ -452,7 +767,9 @@
               <li>Checklists operativos y ficha del cliente lista para imprimir.</li>
             </ul>
           </article>
-          <article class="card">
+          <article class="card emoji-box">
+            <span class="corner-emoji tr" aria-hidden="true">⚡</span>
+            <span class="corner-emoji bl" aria-hidden="true">✂️</span>
             <p class="eyebrow">PDF 2 · Guía visual</p>
             <h3>11 láminas ilustradas</h3>
             <p>Láminas paso a paso para visualizar cada etapa de trabajo: lavado y preparación, grilla de particiones, backcombing, crochet, palm rolling, sellado de puntas y cuidado.</p>
@@ -465,6 +782,24 @@
       </div>
     </section>
 
+    <!-- Galería interactiva con Lightbox (galeria1 a galeria6) -->
+    <section id="galeria" class="section">
+      <div class="wrap">
+        <p class="eyebrow center">Vista previa de taller &amp; láminas</p>
+        <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Galería LEMONBARB3R</h2>
+        <p class="center muted" style="margin-top:10px">Tocá cualquier imagen para ampliarla y recorrer los slides.</p>
+
+        <div class="gallery-grid emoji-box" id="galleryGrid">
+          <span class="corner-emoji tl" aria-hidden="true">🧶</span>
+          <span class="corner-emoji tr" aria-hidden="true">🔥</span>
+          <span class="corner-emoji bl" aria-hidden="true">💜</span>
+          <span class="corner-emoji br" aria-hidden="true">🥷</span>
+          <!-- Las 6 tarjetas se renderizan dinámicamente apuntando a galeria1 .. galeria6 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Para quién es / Lo que no es -->
     <section class="section">
       <div class="wrap two-col">
         <div>
@@ -486,36 +821,62 @@
       </div>
     </section>
 
+    <!-- Compra + Desbloqueo de acceso tras pulsar Mercado Pago -->
     <section id="comprar" class="section">
       <div class="wrap-narrow">
-        <div class="buy-box">
+        <div class="buy-box emoji-box">
+          <span class="corner-emoji tl" aria-hidden="true">🍋</span>
+          <span class="corner-emoji tr" aria-hidden="true">🔥</span>
+          <span class="corner-emoji bl" aria-hidden="true">⚡</span>
+          <span class="corner-emoji br" aria-hidden="true">🥷</span>
           <p class="eyebrow">Acceso completo · Manual + 11 láminas</p>
           <p class="price">$1.000 <span>ARS</span></p>
-          <a href="https://mpago.la/2zwRWqF" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:24px">Pagar con Mercado Pago</a>
-          <p class="small muted" style="margin-top:14px">Se abre el checkout oficial de Mercado Pago en una pestaña nueva.</p>
+          <a href="https://mpago.la/2zwRWqF" target="_blank" rel="noopener" id="mpPayBtn" class="btn btn-primary" style="margin-top:24px">Pagar con Mercado Pago</a>
+          <p class="small muted" style="margin-top:14px">Se abre el checkout oficial de Mercado Pago y se habilita la sección de descarga.</p>
         </div>
 
-        <div class="steps">
+        <!-- Sección oculta que se revela y te lleva directo tras apretar el botón de Mercado Pago -->
+        <div id="unlockSection" class="unlock-panel emoji-box" aria-live="polite">
+          <span class="corner-emoji tl" aria-hidden="true">🔓</span>
+          <span class="corner-emoji tr" aria-hidden="true">🔥</span>
+          <p class="eyebrow">Paso 2 · Descarga habilitada</p>
+          <h3>¡Ya casi tenés tu manual!</h3>
+          <p>
+            Completá tu pago de <strong>$1.000 ARS</strong> en la pestaña de Mercado Pago que se abrió.
+            Una vez acreditado, entrá directo a la carpeta de Google Drive con los dos PDFs:
+          </p>
+          <div class="unlock-actions">
+            <a href="https://drive.google.com/drive/folders/1P3CDmhH_R_TWB1ST8ly1PzI1apKxNaff" target="_blank" rel="noopener" class="btn btn-outline">
+              Abrir carpeta de descarga (2 PDFs)
+            </a>
+            <p class="small muted">
+              ¿Tuviste algún problema con el pago o el acceso? Mandanos tu comprobante por
+              <a href="https://www.instagram.com/lemonbarb3r/" target="_blank" rel="noopener" style="color:var(--indigo); text-decoration:underline;">Instagram (@lemonbarb3r)</a>
+              o a <a href="mailto:contacto@lemonbarb3r.com" style="color:var(--indigo); text-decoration:underline;">contacto@lemonbarb3r.com</a>.
+            </p>
+          </div>
+        </div>
+
+        <div class="steps emoji-box">
+          <span class="corner-emoji br" aria-hidden="true">✨</span>
           <h3>Cómo recibís los archivos</h3>
           <ol>
-            <li>Realizás el pago de <strong>$1.000 ARS</strong> con Mercado Pago desde el botón de arriba.</li>
-            <li>Una vez acreditado el pago, entrás al enlace de descarga directa de abajo y guardás ambos PDF en tu dispositivo.</li>
-            <li>Si tenés algún inconveniente con la acreditación o el acceso, escribinos a <a href="mailto:contacto@lemonbarb3r.com">contacto@lemonbarb3r.com</a> adjuntando tu comprobante.</li>
+            <li>Hacés clic en <strong>Pagar con Mercado Pago</strong> ($1.000 ARS) desde el recuadro de arriba.</li>
+            <li>Al abrirse el pago, se desbloquea automáticamente la sección con el enlace directo a la carpeta de Google Drive para descargar ambos PDF.</li>
+            <li>También podés enviarnos el comprobante por <a href="https://www.instagram.com/lemonbarb3r/" target="_blank" rel="noopener">@lemonbarb3r</a> o a <a href="mailto:contacto@lemonbarb3r.com">contacto@lemonbarb3r.com</a> si necesitás que te lo reenviemos.</li>
           </ol>
-          <div class="drive-block">
-            <a href="https://drive.google.com/drive/folders/1P3CDmhH_R_TWB1ST8ly1PzI1apKxNaff" target="_blank" rel="noopener" class="btn btn-outline">Ir a los archivos (descarga directa)</a>
-            <p class="small muted" style="margin-top:10px">Enlace exclusivo para compradores del material.</p>
-          </div>
         </div>
       </div>
     </section>
 
+    <!-- FAQ -->
     <section class="section">
       <div class="wrap-narrow">
         <p class="eyebrow center">Dudas habituales</p>
         <h2 class="center" style="font-size:2.2rem; margin-top:6px;">Preguntas frecuentes</h2>
         <div class="faq">
-          <div class="faq-item">
+          <div class="faq-item emoji-box">
+            <span class="corner-emoji tr" aria-hidden="true">🔥</span>
             <h3>¿Es un solo PDF o vienen los dos?</h3>
             <p>Incluye los dos archivos PDF: el manual técnico de 29 páginas y el pack de 11 láminas ilustradas. Todo por $1.000 ARS.</p>
           </div>
@@ -529,7 +890,7 @@
           </div>
           <div class="faq-item">
             <h3>¿Qué pasa si tengo un problema con la descarga?</h3>
-            <p>Al ser un producto digital de acceso inmediato, si tenés cualquier falla técnica con el archivo o el link, nos escribís por mail con tu comprobante y te lo enviamos directo.</p>
+            <p>Si cerraste la pestaña antes de descargar o tenés cualquier falla técnica, escribinos por Instagram (@lemonbarb3r) o por mail con tu comprobante y te pasamos el acceso directo.</p>
           </div>
         </div>
       </div>
@@ -556,25 +917,201 @@
     </div>
   </footer>
 
-  <!-- Respaldo inteligente para detectar "foto1" con o sin extensión en GitHub Pages -->
+  <!-- Lightbox / Visor ampliado de Galería -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visor de galería">
+    <button type="button" class="lightbox-close" id="lbClose" aria-label="Cerrar visor">&times;</button>
+    <div class="lightbox-stage">
+      <div class="lightbox-frame" id="lbFrame">
+        <button type="button" class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Foto anterior">&#10094;</button>
+        <div id="lbContent" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;"></div>
+        <button type="button" class="lightbox-nav lightbox-next" id="lbNext" aria-label="Foto siguiente">&#10095;</button>
+      </div>
+      <div class="lightbox-caption">
+        <span id="lbTitle">Galería 1</span>
+        <span class="lightbox-counter" id="lbCounter">1 / 6</span>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // 1. Detección de "foto1" (con o sin extensión) y reemplazo automático del fondo de respaldo
     (function () {
-      const bgEl = document.getElementById('heroBg');
+      const imgEl = document.getElementById('heroFoto1Img');
+      const fallbackSvg = document.getElementById('heroFallbackSvg');
       const candidates = ['foto1.png', 'foto1.jpg', 'foto1.jpeg', 'foto1.webp', 'foto1'];
       let idx = 0;
 
       function tryNext() {
         if (idx >= candidates.length) return;
-        const img = new Image();
         const current = candidates[idx++];
-        img.onload = function () {
-          bgEl.style.backgroundImage = `url('${current}')`;
+        const probe = new Image();
+        probe.onload = function () {
+          imgEl.src = current;
+          imgEl.classList.add('active');
+          if (fallbackSvg) fallbackSvg.classList.add('hidden');
         };
-        img.onerror = tryNext;
-        img.src = current;
+        probe.onerror = tryNext;
+        probe.src = current;
       }
 
       tryNext();
+    })();
+
+    // 2. Desbloqueo de la sección de Drive al pulsar "Pagar con Mercado Pago"
+    (function () {
+      const mpBtn = document.getElementById('mpPayBtn');
+      const unlockSection = document.getElementById('unlockSection');
+      const STORAGE_KEY = 'lemonbarb3r_mp_clicked';
+
+      function revealUnlock(shouldScroll) {
+        unlockSection.classList.add('visible');
+        if (shouldScroll) {
+          setTimeout(function () {
+            unlockSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 250);
+        }
+      }
+
+      if (localStorage.getItem(STORAGE_KEY) === '1' || window.location.hash === '#descarga') {
+        revealUnlock(false);
+      }
+
+      mpBtn.addEventListener('click', function () {
+        localStorage.setItem(STORAGE_KEY, '1');
+        revealUnlock(true);
+      });
+    })();
+
+    // 3. Galería interactiva (galeria1 .. galeria6) + Lightbox con slides
+    (function () {
+      const galleryGrid = document.getElementById('galleryGrid');
+      const lightbox = document.getElementById('lightbox');
+      const lbContent = document.getElementById('lbContent');
+      const lbTitle = document.getElementById('lbTitle');
+      const lbCounter = document.getElementById('lbCounter');
+      const lbClose = document.getElementById('lbClose');
+      const lbPrev = document.getElementById('lbPrev');
+      const lbNext = document.getElementById('lbNext');
+      const lbFrame = document.getElementById('lbFrame');
+
+      const slides = [
+        { base: 'galeria1', title: 'Galería 01 · Seccionamiento & Grilla', icon: '🥷', src: null },
+        { base: 'galeria2', title: 'Galería 02 · Cardado (Backcombing)', icon: '🔥', src: null },
+        { base: 'galeria3', title: 'Galería 03 · Crochet en 3 Fases', icon: '🧶', src: null },
+        { base: 'galeria4', title: 'Galería 04 · Palm Rolling & Cilindro', icon: '⚡', src: null },
+        { base: 'galeria5', title: 'Galería 05 · Sellado de Puntas', icon: '✂️', src: null },
+        { base: 'galeria6', title: 'Galería 06 · Resultado & Taller', icon: '💜', src: null }
+      ];
+
+      let currentIndex = 0;
+
+      function resolveImage(slide, onLoaded) {
+        const exts = ['.png', '.jpg', '.jpeg', '.webp', ''];
+        let i = 0;
+        function next() {
+          if (i >= exts.length) return;
+          const candidate = slide.base + exts[i++];
+          const testImg = new Image();
+          testImg.onload = function () {
+            slide.src = candidate;
+            onLoaded(candidate);
+          };
+          testImg.onerror = next;
+          testImg.src = candidate;
+        }
+        next();
+      }
+
+      slides.forEach((slide, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'gallery-item';
+        btn.setAttribute('aria-label', `Ampliar ${slide.title}`);
+
+        btn.innerHTML = `
+          <div class="gallery-placeholder">
+            <span class="ph-icon">${slide.icon}</span>
+            <span class="ph-label">${slide.base}</span>
+            <span class="ph-hint">Subí ${slide.base}.jpg o .png</span>
+          </div>
+          <span class="gallery-badge">0${index + 1} · AMPLIAR</span>
+        `;
+
+        resolveImage(slide, function (resolvedSrc) {
+          btn.innerHTML = `
+            <img src="${resolvedSrc}" alt="${slide.title}" loading="lazy" />
+            <span class="gallery-badge">0${index + 1} · AMPLIAR</span>
+          `;
+        });
+
+        btn.addEventListener('click', function () {
+          openLightbox(index);
+        });
+
+        galleryGrid.appendChild(btn);
+      });
+
+      function renderSlide(index) {
+        currentIndex = (index + slides.length) % slides.length;
+        const slide = slides[currentIndex];
+        lbTitle.textContent = slide.title;
+        lbCounter.textContent = `${currentIndex + 1} / ${slides.length}`;
+
+        if (slide.src) {
+          lbContent.innerHTML = `<img src="${slide.src}" alt="${slide.title}" />`;
+        } else {
+          lbContent.innerHTML = `
+            <div class="gallery-placeholder" style="padding:32px;">
+              <span class="ph-icon" style="font-size:3.5rem;">${slide.icon}</span>
+              <span class="ph-label" style="font-size:1.3rem;">${slide.base}</span>
+              <span class="ph-hint" style="font-size:0.9rem;">Agregá el archivo <strong>${slide.base}.png</strong> o <strong>${slide.base}.jpg</strong> en la raíz de tu repo en GitHub para mostrarlo acá.</span>
+            </div>
+          `;
+        }
+      }
+
+      function openLightbox(index) {
+        renderSlide(index);
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      lbClose.addEventListener('click', closeLightbox);
+      lbPrev.addEventListener('click', function (e) {
+        e.stopPropagation();
+        renderSlide(currentIndex - 1);
+      });
+      lbNext.addEventListener('click', function (e) {
+        e.stopPropagation();
+        renderSlide(currentIndex + 1);
+      });
+
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') renderSlide(currentIndex - 1);
+        if (e.key === 'ArrowRight') renderSlide(currentIndex + 1);
+      });
+
+      let touchStartX = 0;
+      lbFrame.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      lbFrame.addEventListener('touchend', function (e) {
+        const diff = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(diff) > 40) {
+          renderSlide(diff > 0 ? currentIndex - 1 : currentIndex + 1);
+        }
+      }, { passive: true });
     })();
   </script>
 
