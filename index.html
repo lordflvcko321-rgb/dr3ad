@@ -345,6 +345,19 @@
       }
     }
 
+    .inline-photos-5 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+    @media (min-width: 768px) {
+      .inline-photos-5 {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 14px;
+      }
+    }
+
     /* Bloque con foto lateral al lado de texto */
     .side-feature {
       display: grid;
@@ -363,6 +376,14 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
+    }
+
+    /* Muestras de Fade dentro de la sección de Fade */
+    .fade-samples-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
     }
 
     /* Galería principal de modelos (6 fotos) */
@@ -730,8 +751,8 @@
       </div>
     </section>
 
-    <!-- Qué incluye el pack de locs + fotos de palm rolling, división y crochet entre bloques -->
-    <section class="section">
+    <!-- Qué incluye el pack de locs + fotos de palm rolling, división y crochet + palmroll1 -->
+    <section id="dreads-section" class="section">
       <div class="wrap">
         <p class="eyebrow center">Contenido del pack de locs</p>
         <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Qué incluye el pack de locs</h2>
@@ -762,12 +783,12 @@
           </article>
         </div>
 
-        <!-- 3 fotos de palm rolling, división y crochet + 1 de crochet intercaladas aquí -->
-        <div class="inline-photos-4" id="stripPalmCrochet"></div>
+        <!-- 3 fotos de palm rolling, división y crochet + 1 de crochet + palmroll1 en sección de dreads -->
+        <div class="inline-photos-5" id="stripPalmCrochet"></div>
       </div>
     </section>
 
-    <!-- Alisados y tratamientos + Técnica de fade con fotos largas y cortos al costado -->
+    <!-- Alisados y tratamientos + Técnica de fade con muestras fadecorte1/fadecorte2 y fotos largas y cortos al costado -->
     <section id="tecnicas-extra" class="section">
       <div class="wrap">
         <p class="eyebrow center">Módulos complementarios</p>
@@ -788,7 +809,7 @@
                 <li>Protocolos de recuperación y mantenimiento post-tratamiento.</li>
               </ul>
             </article>
-            <article class="card emoji-box">
+            <article class="card emoji-box" id="fadeCard">
               <span class="corner-emoji md pos-tr" aria-hidden="true">✂️</span>
               <span class="corner-emoji md pos-bl" aria-hidden="true">⚡</span>
               <p class="eyebrow">Módulo · Degradados y contornos</p>
@@ -799,6 +820,8 @@
                 <li>Pulido de sombras sin líneas marcadas ni sobreexposición de piel.</li>
                 <li>Terminaciones en nuca, patillas y contorno con higiene de taller.</li>
               </ul>
+              <!-- Muestras de fade (fadecorte1 y fadecorte2) -->
+              <div class="fade-samples-strip" id="fadeSamplesStrip"></div>
             </article>
           </div>
 
@@ -955,7 +978,7 @@
       </div>
       <div class="lightbox-caption">
         <span id="lbTitle">LEMONBARB3R</span>
-        <span class="lightbox-counter" id="lbCounter">1 / 18</span>
+        <span class="lightbox-counter" id="lbCounter">1 / 21</span>
       </div>
     </div>
   </div>
@@ -1134,6 +1157,7 @@
     (function () {
       const galleryGrid = document.getElementById('galleryGrid');
       const stripPalmCrochet = document.getElementById('stripPalmCrochet');
+      const fadeSamplesStrip = document.getElementById('fadeSamplesStrip');
       const sideLargasCortos = document.getElementById('sideLargasCortos');
       const stripCortosSinteticos = document.getElementById('stripCortosSinteticos');
 
@@ -1155,11 +1179,16 @@
         { base: 'modelo5', title: 'Modelos · 05', badge: '05 · VER', icon: '💜', target: galleryGrid, src: null },
         { base: 'modelo6', title: 'Modelos · 06', badge: '06 · VER', icon: '💜', target: galleryGrid, src: null },
 
-        // 3 palm rolling, división y crochet + 1 crochet entre bloques de manual/láminas
+        // Sección de dreads: palm rolling, división, crochet + palmroll1
         { base: 'palm_crochet1', title: 'Palm rolling, división y crochet · 01', badge: 'VER', icon: '⚡', target: stripPalmCrochet, src: null },
         { base: 'palm_crochet2', title: 'Palm rolling, división y crochet · 02', badge: 'VER', icon: '⚡', target: stripPalmCrochet, src: null },
         { base: 'palm_crochet3', title: 'Palm rolling, división y crochet · 03', badge: 'VER', icon: '⚡', target: stripPalmCrochet, src: null },
         { base: 'crochet1', title: 'Crochet · 01', badge: 'VER', icon: '🧶', target: stripPalmCrochet, src: null },
+        { base: 'palmroll1', title: 'Palm rolling · Técnica de dreads', badge: 'VER', icon: '🧶', target: stripPalmCrochet, src: null },
+
+        // Sección de fade: fadecorte1 y fadecorte2 como muestra
+        { base: 'fadecorte1', title: 'Muestra Fade · 01', badge: 'VER', icon: '✂️', target: fadeSamplesStrip, src: null },
+        { base: 'fadecorte2', title: 'Muestra Fade · 02', badge: 'VER', icon: '⚡', target: fadeSamplesStrip, src: null },
 
         // 2 dreads largas + 2 dreads cortos al costado en la sección de técnicas
         { base: 'largas1', title: 'Dreads largas · 01', badge: 'VER', icon: '✨', target: sideLargasCortos, src: null },
