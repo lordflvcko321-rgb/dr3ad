@@ -345,16 +345,25 @@
       }
     }
 
+    /* 5 fotos de dreads: grilla pareja en celular (2 cols + 5.ª a ancho completo) y 5 columnas en escritorio */
     .inline-photos-5 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
       margin-top: 26px;
     }
+    .inline-photos-5 .photo-tile:last-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16 / 9;
+    }
     @media (min-width: 768px) {
       .inline-photos-5 {
         grid-template-columns: repeat(5, 1fr);
         gap: 14px;
+      }
+      .inline-photos-5 .photo-tile:last-child {
+        grid-column: auto;
+        aspect-ratio: 1 / 1;
       }
     }
 
@@ -783,7 +792,7 @@
           </article>
         </div>
 
-        <!-- 3 fotos de palm rolling, división y crochet + 1 de crochet + palmroll1 en sección de dreads -->
+        <!-- 5 fotos de dreads en grilla pareja -->
         <div class="inline-photos-5" id="stripPalmCrochet"></div>
       </div>
     </section>
