@@ -79,7 +79,7 @@
       font-weight: 600;
     }
 
-    /* Emojis flotantes en esquinas de recuadros (moderados y acordes al tema) */
+    /* Emojis flotantes en esquinas de recuadros */
     .emoji-box {
       position: relative;
     }
@@ -317,7 +317,53 @@
     .card li + li { margin-top: 8px; }
     .card li::marker { color: var(--celery); }
 
-    /* Galería de trabajos / láminas */
+    /* Tiras / fotos intercaladas entre secciones o de costado */
+    .inline-photos-4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+    @media (min-width: 768px) {
+      .inline-photos-4 {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+    }
+    .inline-photos-3 {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+    @media (min-width: 640px) {
+      .inline-photos-3 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+    }
+
+    /* Bloque con foto lateral al lado de texto */
+    .side-feature {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-top: 28px;
+    }
+    @media (min-width: 768px) {
+      .side-feature {
+        grid-template-columns: 1.35fr 0.85fr;
+        gap: 28px;
+      }
+    }
+    .side-photos-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* Galería principal de modelos (6 fotos) */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -330,7 +376,8 @@
         gap: 22px;
       }
     }
-    .gallery-item {
+
+    .photo-tile {
       position: relative;
       aspect-ratio: 1 / 1;
       border-radius: 16px;
@@ -343,20 +390,21 @@
       align-items: center;
       justify-content: center;
       padding: 0;
+      width: 100%;
     }
-    .gallery-item:hover {
+    .photo-tile:hover {
       transform: translateY(-4px);
       border-color: var(--celery);
       box-shadow: 0 12px 28px rgba(176, 38, 255, 0.28);
     }
-    .gallery-item img {
+    .photo-tile img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
       transition: transform 0.35s ease;
     }
-    .gallery-item:hover img {
+    .photo-tile:hover img {
       transform: scale(1.05);
     }
     .gallery-placeholder {
@@ -364,36 +412,36 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 16px;
+      gap: 6px;
+      padding: 14px;
       text-align: center;
-      color: rgba(244, 240, 221, 0.65);
+      color: rgba(244, 240, 221, 0.68);
     }
     .gallery-placeholder .ph-icon {
-      font-size: 2rem;
+      font-size: 1.85rem;
       filter: drop-shadow(0 0 8px rgba(176, 38, 255, 0.5));
     }
     .gallery-placeholder .ph-label {
       font-family: 'Oswald', sans-serif;
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
       color: var(--indigo);
       text-transform: uppercase;
     }
     .gallery-placeholder .ph-hint {
-      font-size: 0.75rem;
-      color: rgba(244, 240, 221, 0.45);
+      font-size: 0.72rem;
+      color: rgba(244, 240, 221, 0.48);
     }
     .gallery-badge {
       position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(10, 8, 18, 0.82);
+      bottom: 9px;
+      right: 9px;
+      background: rgba(10, 8, 18, 0.85);
       border: 1px solid rgba(168, 138, 237, 0.45);
       color: var(--celery);
       font-family: 'Oswald', sans-serif;
-      font-size: 0.78rem;
-      padding: 3px 10px;
+      font-size: 0.72rem;
+      padding: 3px 9px;
       border-radius: 999px;
       letter-spacing: 0.06em;
       backdrop-filter: blur(4px);
@@ -714,7 +762,7 @@
       </div>
     </section>
 
-    <!-- Qué incluye la compra -->
+    <!-- Qué incluye la compra + fotos de palm rolling, división y crochet entre bloques -->
     <section class="section">
       <div class="wrap">
         <p class="eyebrow center">Contenido del pack</p>
@@ -745,82 +793,96 @@
             </ul>
           </article>
         </div>
+
+        <!-- 3 fotos de palm rolling, división y crochet + 1 de crochet intercaladas aquí -->
+        <div class="inline-photos-4" id="stripPalmCrochet"></div>
       </div>
     </section>
 
-    <!-- Nuevas secciones técnicas: Alisados y tratamientos + Técnica de fade -->
+    <!-- Alisados y tratamientos + Técnica de fade con fotos largas1, largas2, cortos1, cortos2 -->
     <section id="tecnicas-extra" class="section">
       <div class="wrap">
         <p class="eyebrow center">Módulos complementarios</p>
         <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Alisados, tratamientos y fade</h2>
         <p class="center muted" style="margin-top:10px">Criterio de taller para acompañar procesos capilares, degradados y terminaciones limpias.</p>
-        <div class="grid-2">
-          <article class="card emoji-box">
-            <span class="corner-emoji md pos-tl" aria-hidden="true">✨</span>
-            <span class="corner-emoji sm pos-br" aria-hidden="true">💧</span>
-            <p class="eyebrow">Módulo · Cuidado y fibra</p>
-            <h3>Alisados y tratamientos</h3>
-            <p>Evaluación del estado de la fibra y el cuero cabelludo antes de aplicar activos alisantes, hidratantes, nutritivos o reconstructores.</p>
-            <ul>
-              <li>Diagnóstico de porosidad, elasticidad y compatibilidad química/térmica.</li>
-              <li>Control de temperatura y tiempos de exposición para evitar rotura y frizz.</li>
-              <li>Protocolos de recuperación y mantenimiento post-tratamiento.</li>
-            </ul>
-          </article>
-          <article class="card emoji-box">
-            <span class="corner-emoji md pos-tr" aria-hidden="true">✂️</span>
-            <span class="corner-emoji sm pos-bl" aria-hidden="true">⚡</span>
-            <p class="eyebrow">Módulo · Degradados y contornos</p>
-            <h3>Técnica de fade</h3>
-            <p>Construcción de degradados limpios y transiciones graduales, integrando el corte con la estructura general o con zonas de locs.</p>
-            <ul>
-              <li>Marcación de bases, guías y uso progresivo de guardas y palanca.</li>
-              <li>Pulido de sombras sin líneas marcadas ni sobreexposición de piel.</li>
-              <li>Terminaciones en nuca, patillas y contorno con higiene de taller.</li>
-            </ul>
-          </article>
+
+        <div class="side-feature">
+          <div class="grid-2" style="margin-top:0;">
+            <article class="card emoji-box">
+              <span class="corner-emoji md pos-tl" aria-hidden="true">✨</span>
+              <span class="corner-emoji sm pos-br" aria-hidden="true">💧</span>
+              <p class="eyebrow">Módulo · Cuidado y fibra</p>
+              <h3>Alisados y tratamientos</h3>
+              <p>Evaluación del estado de la fibra y el cuero cabelludo antes de aplicar activos alisantes, hidratantes, nutritivos o reconstructores.</p>
+              <ul>
+                <li>Diagnóstico de porosidad, elasticidad y compatibilidad química/térmica.</li>
+                <li>Control de temperatura y tiempos de exposición para evitar rotura y frizz.</li>
+                <li>Protocolos de recuperación y mantenimiento post-tratamiento.</li>
+              </ul>
+            </article>
+            <article class="card emoji-box">
+              <span class="corner-emoji md pos-tr" aria-hidden="true">✂️</span>
+              <span class="corner-emoji sm pos-bl" aria-hidden="true">⚡</span>
+              <p class="eyebrow">Módulo · Degradados y contornos</p>
+              <h3>Técnica de fade</h3>
+              <p>Construcción de degradados limpios y transiciones graduales, integrando el corte con la estructura general o con zonas de locs.</p>
+              <ul>
+                <li>Marcación de bases, guías y uso progresivo de guardas y palanca.</li>
+                <li>Pulido de sombras sin líneas marcadas ni sobreexposición de piel.</li>
+                <li>Terminaciones en nuca, patillas y contorno con higiene de taller.</li>
+              </ul>
+            </article>
+          </div>
+
+          <!-- Fotos laterales: dreads largas (largas1, largas2) y dreads cortos (cortos1, cortos2) -->
+          <div class="side-photos-pair" id="sideLargasCortos"></div>
         </div>
       </div>
     </section>
 
-    <!-- Galería interactiva con Lightbox (galeria1 a galeria6) -->
+    <!-- Galería principal: 6 fotos de modelos (modelo1 a modelo6) -->
     <section id="galeria" class="section">
       <div class="wrap">
-        <p class="eyebrow center">Vista previa de taller &amp; láminas</p>
+        <p class="eyebrow center">Modelos · Vista previa</p>
         <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Galería LEMONBARB3R</h2>
-        <p class="center muted" style="margin-top:10px">Tocá cualquier imagen para ampliarla y recorrer los slides.</p>
+        <p class="center muted" style="margin-top:10px">Tocá cualquier foto para ampliarla y recorrer los slides.</p>
 
         <div class="gallery-grid emoji-box" id="galleryGrid">
           <span class="corner-emoji md pos-tl" aria-hidden="true">💜</span>
           <span class="corner-emoji md pos-br" aria-hidden="true">📸</span>
-          <!-- Las 6 tarjetas se renderizan dinámicamente apuntando a galeria1 .. galeria6 -->
+          <!-- Las 6 fotos de modelos se renderizan acá -->
         </div>
       </div>
     </section>
 
-    <!-- Para quién es / Lo que no es -->
+    <!-- Para quién es / Lo que no es + fotos cortos3 y sinteticos1..3 -->
     <section class="section">
-      <div class="wrap two-col">
-        <div class="card emoji-box">
-          <span class="corner-emoji md pos-tl" aria-hidden="true">✂️</span>
-          <span class="corner-emoji sm pos-br" aria-hidden="true">💜</span>
-          <h2>Para quién es</h2>
-          <ul>
-            <li>Personas que quieren aprender a construir y mantener locs desde cero con método.</li>
-            <li>Barberos, peluqueros y estilistas que suman locs, fade o tratamientos a su taller.</li>
-            <li>Quienes ya trabajan y buscan revisar técnica, control de tensión y criterio.</li>
-          </ul>
+      <div class="wrap">
+        <div class="two-col">
+          <div class="card emoji-box">
+            <span class="corner-emoji md pos-tl" aria-hidden="true">✂️</span>
+            <span class="corner-emoji sm pos-br" aria-hidden="true">💜</span>
+            <h2>Para quién es</h2>
+            <ul>
+              <li>Personas que quieren aprender a construir y mantener locs desde cero con método.</li>
+              <li>Barberos, peluqueros y estilistas que suman locs, fade o tratamientos a su taller.</li>
+              <li>Quienes ya trabajan y buscan revisar técnica, control de tensión y criterio.</li>
+            </ul>
+          </div>
+          <div class="card emoji-box">
+            <span class="corner-emoji md pos-tr" aria-hidden="true">🩺</span>
+            <span class="corner-emoji sm pos-bl" aria-hidden="true">📌</span>
+            <h2>Lo que no es</h2>
+            <ul>
+              <li>No reemplaza la práctica supervisada ni la formación presencial en taller.</li>
+              <li>No es asesoramiento médico: ante picazón, dolor, descamación o caída de cabello, consultá a un profesional de la salud.</li>
+              <li>No promete resultados mágicos: cada textura y densidad capilar responde distinto.</li>
+            </ul>
+          </div>
         </div>
-        <div class="card emoji-box">
-          <span class="corner-emoji md pos-tr" aria-hidden="true">🩺</span>
-          <span class="corner-emoji sm pos-bl" aria-hidden="true">📌</span>
-          <h2>Lo que no es</h2>
-          <ul>
-            <li>No reemplaza la práctica supervisada ni la formación presencial en taller.</li>
-            <li>No es asesoramiento médico: ante picazón, dolor, descamación o caída de cabello, consultá a un profesional de la salud.</li>
-            <li>No promete resultados mágicos: cada textura y densidad capilar responde distinto.</li>
-          </ul>
-        </div>
+
+        <!-- cortos3 + sinteticos1, sinteticos2, sinteticos3 entre bloques -->
+        <div class="inline-photos-4" id="stripCortosSinteticos"></div>
       </div>
     </section>
 
@@ -940,7 +1002,7 @@
         <button type="button" class="lightbox-nav lightbox-next" id="lbNext" aria-label="Foto siguiente">&#10095;</button>
       </div>
       <div class="lightbox-caption">
-        <span id="lbTitle">Galería 1</span>
+        <span id="lbTitle">Galería</span>
         <span class="lightbox-counter" id="lbCounter">1 / 6</span>
       </div>
     </div>
@@ -990,9 +1052,13 @@
       });
     })();
 
-    // 3. Galería interactiva (galeria1 .. galeria6) + Lightbox con slides
+    // 3. Galería principal (modelo1..modelo6) + fotos distribuidas en distintas zonas de la web + Lightbox
     (function () {
       const galleryGrid = document.getElementById('galleryGrid');
+      const stripPalmCrochet = document.getElementById('stripPalmCrochet');
+      const sideLargasCortos = document.getElementById('sideLargasCortos');
+      const stripCortosSinteticos = document.getElementById('stripCortosSinteticos');
+
       const lightbox = document.getElementById('lightbox');
       const lbContent = document.getElementById('lbContent');
       const lbTitle = document.getElementById('lbTitle');
@@ -1002,26 +1068,45 @@
       const lbNext = document.getElementById('lbNext');
       const lbFrame = document.getElementById('lbFrame');
 
-      const slides = [
-        { base: 'galeria1', title: 'Galería 01 · Seccionamiento & Grilla', icon: '✂️', src: null },
-        { base: 'galeria2', title: 'Galería 02 · Cardado (Backcombing)', icon: '🪮', src: null },
-        { base: 'galeria3', title: 'Galería 03 · Crochet en 3 Fases', icon: '🧶', src: null },
-        { base: 'galeria4', title: 'Galería 04 · Palm Rolling & Cilindro', icon: '⚡', src: null },
-        { base: 'galeria5', title: 'Galería 05 · Alisados, Fade & Sellado', icon: '✨', src: null },
-        { base: 'galeria6', title: 'Galería 06 · Resultado & Taller', icon: '💜', src: null }
+      const allPhotos = [
+        // 6 de modelos en la galería principal
+        { base: 'modelo1', title: 'Modelo 01', badge: '01 · MODELO', icon: '💜', target: galleryGrid, src: null },
+        { base: 'modelo2', title: 'Modelo 02', badge: '02 · MODELO', icon: '💜', target: galleryGrid, src: null },
+        { base: 'modelo3', title: 'Modelo 03', badge: '03 · MODELO', icon: '💜', target: galleryGrid, src: null },
+        { base: 'modelo4', title: 'Modelo 04', badge: '04 · MODELO', icon: '💜', target: galleryGrid, src: null },
+        { base: 'modelo5', title: 'Modelo 05', badge: '05 · MODELO', icon: '💜', target: galleryGrid, src: null },
+        { base: 'modelo6', title: 'Modelo 06', badge: '06 · MODELO', icon: '💜', target: galleryGrid, src: null },
+
+        // 3 palm rolling, división y crochet + 1 crochet entre bloques de manual/láminas
+        { base: 'palm_crochet1', title: 'Palm rolling, división y crochet 01', badge: 'PALM · DIVISIÓN · CROCHET', icon: '⚡', target: stripPalmCrochet, src: null },
+        { base: 'palm_crochet2', title: 'Palm rolling, división y crochet 02', badge: 'PALM · DIVISIÓN · CROCHET', icon: '⚡', target: stripPalmCrochet, src: null },
+        { base: 'palm_crochet3', title: 'Palm rolling, división y crochet 03', badge: 'PALM · DIVISIÓN · CROCHET', icon: '⚡', target: stripPalmCrochet, src: null },
+        { base: 'crochet1', title: 'Crochet 01', badge: 'CROCHET', icon: '🧶', target: stripPalmCrochet, src: null },
+
+        // 2 dreads largas + 2 dreads cortos al costado en la sección de técnicas
+        { base: 'largas1', title: 'Dreads largas 01', badge: 'LARGAS', icon: '✨', target: sideLargasCortos, src: null },
+        { base: 'largas2', title: 'Dreads largas 02', badge: 'LARGAS', icon: '✨', target: sideLargasCortos, src: null },
+        { base: 'cortos1', title: 'Dreads cortos 01', badge: 'CORTOS', icon: '✂️', target: sideLargasCortos, src: null },
+        { base: 'cortos2', title: 'Dreads cortos 02', badge: 'CORTOS', icon: '✂️', target: sideLargasCortos, src: null },
+
+        // 1 dreads cortos restante + 3 armado de dreads sintéticos entre bloques de para quién es / lo que no es
+        { base: 'cortos3', title: 'Dreads cortos 03', badge: 'CORTOS', icon: '✂️', target: stripCortosSinteticos, src: null },
+        { base: 'sinteticos1', title: 'Armado de dreads sintéticos 01', badge: 'SINTÉTICOS', icon: '🎨', target: stripCortosSinteticos, src: null },
+        { base: 'sinteticos2', title: 'Armado de dreads sintéticos 02', badge: 'SINTÉTICOS', icon: '🎨', target: stripCortosSinteticos, src: null },
+        { base: 'sinteticos3', title: 'Armado de dreads sintéticos 03', badge: 'SINTÉTICOS', icon: '🎨', target: stripCortosSinteticos, src: null }
       ];
 
       let currentIndex = 0;
 
-      function resolveImage(slide, onLoaded) {
+      function resolveImage(photo, onLoaded) {
         const exts = ['.png', '.jpg', '.jpeg', '.webp', ''];
         let idx = 0;
         function next() {
           if (idx >= exts.length) return;
-          const candidate = slide.base + exts[idx++];
+          const candidate = photo.base + exts[idx++];
           const testImg = new Image();
           testImg.onload = function () {
-            slide.src = candidate;
+            photo.src = candidate;
             onLoaded(candidate);
           };
           testImg.onerror = next;
@@ -1030,49 +1115,57 @@
         next();
       }
 
-      slides.forEach((slide, index) => {
+      allPhotos.forEach((photo, index) => {
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'gallery-item';
-        btn.setAttribute('aria-label', `Ampliar ${slide.title}`);
+        btn.className = 'photo-tile';
+        btn.setAttribute('aria-label', `Ampliar ${photo.title}`);
 
-        btn.innerHTML = `
-          <div class="gallery-placeholder">
-            <span class="ph-icon">${slide.icon}</span>
-            <span class="ph-label">${slide.base}</span>
-            <span class="ph-hint">Subí ${slide.base}.jpg o .png</span>
-          </div>
-          <span class="gallery-badge">0${index + 1} · AMPLIAR</span>
-        `;
+        function paintTile() {
+          if (photo.src) {
+            btn.innerHTML = `
+              <img src="${photo.src}" alt="${photo.title}" loading="lazy" />
+              <span class="gallery-badge">${photo.badge}</span>
+            `;
+          } else {
+            btn.innerHTML = `
+              <div class="gallery-placeholder">
+                <span class="ph-icon">${photo.icon}</span>
+                <span class="ph-label">${photo.base}</span>
+                <span class="ph-hint">Subí ${photo.base}.png o .jpg</span>
+              </div>
+              <span class="gallery-badge">${photo.badge}</span>
+            `;
+          }
+        }
 
-        resolveImage(slide, function (resolvedSrc) {
-          btn.innerHTML = `
-            <img src="${resolvedSrc}" alt="${slide.title}" loading="lazy" />
-            <span class="gallery-badge">0${index + 1} · AMPLIAR</span>
-          `;
+        paintTile();
+
+        resolveImage(photo, function () {
+          paintTile();
         });
 
         btn.addEventListener('click', function () {
           openLightbox(index);
         });
 
-        galleryGrid.appendChild(btn);
+        photo.target.appendChild(btn);
       });
 
       function renderSlide(index) {
-        currentIndex = (index + slides.length) % slides.length;
-        const slide = slides[currentIndex];
-        lbTitle.textContent = slide.title;
-        lbCounter.textContent = `${currentIndex + 1} / ${slides.length}`;
+        currentIndex = (index + allPhotos.length) % allPhotos.length;
+        const photo = allPhotos[currentIndex];
+        lbTitle.textContent = photo.title;
+        lbCounter.textContent = `${currentIndex + 1} / ${allPhotos.length}`;
 
-        if (slide.src) {
-          lbContent.innerHTML = `<img src="${slide.src}" alt="${slide.title}" />`;
+        if (photo.src) {
+          lbContent.innerHTML = `<img src="${photo.src}" alt="${photo.title}" />`;
         } else {
           lbContent.innerHTML = `
             <div class="gallery-placeholder" style="padding:32px;">
-              <span class="ph-icon" style="font-size:3.5rem;">${slide.icon}</span>
-              <span class="ph-label" style="font-size:1.3rem;">${slide.base}</span>
-              <span class="ph-hint" style="font-size:0.9rem;">Agregá el archivo <strong>${slide.base}.png</strong> o <strong>${slide.base}.jpg</strong> en la raíz de tu repo en GitHub para mostrarlo acá.</span>
+              <span class="ph-icon" style="font-size:3.5rem;">${photo.icon}</span>
+              <span class="ph-label" style="font-size:1.3rem;">${photo.base}</span>
+              <span class="ph-hint" style="font-size:0.9rem;">Agregá el archivo <strong>${photo.base}.png</strong> o <strong>${photo.base}.jpg</strong> en la raíz de tu repo en GitHub para mostrarlo acá.</span>
             </div>
           `;
         }
