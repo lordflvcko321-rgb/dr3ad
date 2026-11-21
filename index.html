@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LEMONBARB3R | Manual Completo sobre Locs / Dreadlocks</title>
-  <meta name="description" content="Manual de formación técnica sobre locs y dreadlocks: de cero a dreadmaker / loctician, alisados y tratamientos, y técnica de fade. 29 páginas + 11 láminas ilustradas por $1.000 ARS con Mercado Pago." />
+  <meta name="description" content="Manual de formación técnica sobre locs y dreadlocks, Fade Express + Freestyle con Color por $1.000 ARS, Pack Locs por $1.000 ARS y guía 10 Errores gratis." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Oswald:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -567,29 +567,15 @@
     .two-col li + li { margin-top: 12px; }
     .two-col li::marker { color: var(--celery); }
 
-    /* Caja de Compra y Desbloqueo Post-MP */
-    .buy-box {
-      background: linear-gradient(180deg, #1D1636 0%, var(--surface) 100%);
-      border: 2px solid rgba(168, 138, 237, 0.45);
-      border-radius: 20px;
-      padding: 40px 28px;
-      text-align: center;
-      box-shadow: 0 16px 48px rgba(124, 58, 237, 0.18);
-    }
-    .price-wrap {
-      position: relative;
-      display: inline-block;
-      margin-top: 6px;
-      padding: 8px 34px;
-    }
+    /* Ofertas y acceso a Drive */
     .price {
       font-family: 'Oswald', sans-serif;
-      font-size: 3.5rem;
+      font-size: 2.6rem;
       font-weight: 700;
       color: var(--beige);
       line-height: 1;
     }
-    .price span { font-size: 1.4rem; color: var(--celery); }
+    .price span { font-size: 1.2rem; color: var(--celery); }
 
     .steps {
       margin-top: 36px;
@@ -606,14 +592,13 @@
     .steps li::marker { color: var(--celery); font-weight: 700; }
     .steps a { color: var(--indigo); text-decoration: underline; }
 
-    /* Sección de acceso a Drive oculta hasta iniciar pago en MP */
     .unlock-panel {
       display: none;
-      margin-top: 32px;
+      margin-top: 18px;
       background: linear-gradient(180deg, #1E1838 0%, #130F24 100%);
       border: 2px solid var(--celery);
-      border-radius: 18px;
-      padding: 32px 26px;
+      border-radius: 16px;
+      padding: 20px;
       text-align: center;
       box-shadow: 0 14px 40px rgba(166, 194, 97, 0.2);
       animation: unlockPop 0.35s ease;
@@ -622,25 +607,8 @@
       display: block;
     }
     @keyframes unlockPop {
-      from { opacity: 0; transform: translateY(14px) scale(0.98); }
+      from { opacity: 0; transform: translateY(10px) scale(0.98); }
       to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .unlock-panel h3 {
-      font-size: 1.5rem;
-      color: var(--celery);
-      margin-top: 6px;
-    }
-    .unlock-panel p {
-      margin-top: 10px;
-      color: rgba(244, 240, 221, 0.85);
-      font-size: 0.95rem;
-    }
-    .unlock-actions {
-      margin-top: 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
     }
 
     /* FAQ */
@@ -702,9 +670,12 @@
   <!-- Configuración centralizada de enlaces -->
   <script>
     const LEMON = {
-      precio: "$1.000 ARS",
-      mpLink: "https://mpago.la/2zwRWqF",
-      driveLink: "https://drive.google.com/drive/folders/1P3CDmhH_R_TWB1ST8ly1PzI1apKxNaff",
+      precioBase: "$1.000 ARS",
+      mpLocsLink: "https://mpago.la/2zwRWqF",
+      mpFadeLink: "https://mpago.la/TU_LINK_MP_FADE_1000",
+      driveLocsLink: "https://drive.google.com/drive/folders/1P3CDmhH_R_TWB1ST8ly1PzI1apKxNaff",
+      driveFadeLink: "https://drive.google.com/drive/folders/TU_CARPETA_DRIVE_FADE_FREESTYLE",
+      driveErroresGratisLink: "https://drive.google.com/drive/folders/TU_CARPETA_DRIVE_10_ERRORES_GRATIS",
       igLink: "https://www.instagram.com/lemonbarb3r/",
       email: "contacto@lemonbarb3r.com"
     };
@@ -722,7 +693,7 @@
           </svg>
           <span class="ig-handle-short"></span>
         </a>
-        <a href="#comprar" class="btn btn-celery">Comprar $1.000</a>
+        <a href="#comprar" class="btn btn-celery">Ver guías</a>
       </div>
     </div>
   </header>
@@ -741,38 +712,38 @@
         <span class="corner-emoji md pos-bl" aria-hidden="true">🧶</span>
         <span class="corner-emoji md pos-br" aria-hidden="true">🔥</span>
 
-        <p class="eyebrow">Formación técnica en locs y dreadlocks</p>
+        <p class="eyebrow">Formación técnica en locs, fade y color</p>
         <span class="brand-logo hero-brand">LEMONBARB3R</span>
         <h1>Manual completo sobre locs / dreadlocks</h1>
         <p class="sub-badge">De 0 a Dreadmaker / Loctician</p>
         <p class="lead">
           Texto técnico con seccionamiento, cardado (backcombing), integración con crochet en tres fases, rodado manual,
-          mantenimiento, reparación y criterio profesional, más 11 láminas ilustradas para seguir cada paso.
+          mantenimiento, reparación y criterio profesional, más 11 láminas ilustradas, Fade Express, Freestyle con Color y 10 Errores gratis.
         </p>
         <div class="cta">
-          <a href="#comprar" class="btn btn-primary">Quiero el manual y las láminas · $1.000 ARS</a>
-          <p class="small muted">Pago seguro con Mercado Pago. Incluye los dos archivos PDF.</p>
+          <a href="#comprar" class="btn btn-primary">Ver guías y extras · Desde $1.000 ARS</a>
+          <p class="small muted">Pago con Mercado Pago en guías de $1.000 ARS y guía de errores gratis.</p>
         </div>
       </div>
     </section>
 
-    <!-- Qué incluye la compra + fotos de palm rolling, división y crochet entre bloques -->
+    <!-- Qué incluye el pack de locs + fotos de palm rolling, división y crochet entre bloques -->
     <section class="section">
       <div class="wrap">
-        <p class="eyebrow center">Contenido del pack</p>
-        <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Qué incluye la compra</h2>
-        <p class="center muted" style="margin-top:10px">Dos archivos PDF descargables, ambos incluidos en el mismo acceso.</p>
+        <p class="eyebrow center">Contenido del pack de locs</p>
+        <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Qué incluye el pack de locs</h2>
+        <p class="center muted" style="margin-top:10px">Manual maestro, 11 láminas ilustradas, el nuevo PDF de locs y el extra de 10 errores.</p>
         <div class="grid-2">
           <article class="card emoji-box">
             <span class="corner-emoji md pos-tl" aria-hidden="true">📋</span>
             <span class="corner-emoji md pos-br" aria-hidden="true">✂️</span>
             <p class="eyebrow">PDF 1 · Texto técnico</p>
-            <h3>Manual Maestro</h3>
-            <p>29 páginas en formato A4 con glosario exclusivo, herramientas, diagnóstico capilar, construcción, mantenimiento, reparación, cuidados, maduración, seguridad, errores, atención al cliente y anexos.</p>
+            <h3>Manual Maestro + Nuevo PDF de Locs</h3>
+            <p>29 páginas en formato A4 con glosario exclusivo, herramientas, diagnóstico capilar, construcción, mantenimiento, reparación, cuidados, maduración, seguridad, errores, atención al cliente y anexos, sumando el nuevo PDF de locs como extra.</p>
             <ul>
               <li>Construcción en seis etapas, con método de crochet en tres fases.</li>
-              <li>Tablas de errores frecuentes y cómo corregirlos sin dañar la fibra.</li>
-              <li>Checklists operativos y ficha del cliente lista para imprimir.</li>
+              <li>Extra: nuevo PDF de locs con enfoque práctico de taller.</li>
+              <li>Extra: guía de 10 Errores Que Te Hacen Perder Clientes.</li>
             </ul>
           </article>
           <article class="card emoji-box">
@@ -844,7 +815,6 @@
         <div class="gallery-grid emoji-box" id="galleryGrid">
           <span class="corner-emoji md pos-tl" aria-hidden="true">💜</span>
           <span class="corner-emoji md pos-br" aria-hidden="true">📸</span>
-          <!-- Las 6 fotos de modelos se renderizan acá -->
         </div>
       </div>
     </section>
@@ -880,56 +850,28 @@
       </div>
     </section>
 
-    <!-- Compra + Desbloqueo de acceso tras pulsar Mercado Pago -->
+    <!-- Compra y Descargas: Fade Express ($1.000 + Extra Freestyle), Pack Locs ($1.000 + Extra Locs + Extra 10 Errores) y 10 Errores (Gratis) -->
     <section id="comprar" class="section">
-      <div class="wrap-narrow">
-        <div class="buy-box emoji-box">
-          <span class="corner-emoji lg pos-tl" aria-hidden="true">🍋</span>
-          <span class="corner-emoji md pos-br" aria-hidden="true">🔥</span>
+      <div class="wrap">
+        <p class="eyebrow center">Guías y extras · Acceso por Google Drive</p>
+        <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Elegí tu guía o descargá gratis</h2>
+        <p class="center muted" style="margin-top:10px">
+          Fade Express y Pack de Locs a $1.000 ARS cada uno con sus extras, y la guía de 10 Errores gratis.
+        </p>
 
-          <p class="eyebrow">Acceso completo · Manual + 11 láminas</p>
+        <!-- Destacado especial: Fade Express ($1.000 ARS) + Extra Freestyle con Color -->
+        <div id="featuredFadeBox" style="margin-top:34px;"></div>
 
-          <div class="price-wrap">
-            <span class="corner-emoji sm pos-tl" aria-hidden="true">⚡</span>
-            <span class="corner-emoji sm pos-tr" aria-hidden="true">🔥</span>
-            <span class="corner-emoji sm pos-bl" aria-hidden="true">💜</span>
-            <span class="corner-emoji sm pos-br" aria-hidden="true">✨</span>
-            <p class="price">$1.000 <span>ARS</span></p>
-          </div>
+        <!-- Pack Locs ($1.000 ARS con Extra Locs + Extra 10 Errores) y Guía 10 Errores (Gratis) -->
+        <div class="grid-2" id="otherOffersGrid" style="margin-top:28px;"></div>
 
-          <a href="https://mpago.la/2zwRWqF" target="_blank" rel="noopener" id="mpPayBtn" class="btn btn-primary" style="margin-top:24px">Pagar con Mercado Pago</a>
-          <p class="small muted" style="margin-top:14px">Se abre el checkout oficial de Mercado Pago y se habilita la sección de descarga.</p>
-        </div>
-
-        <!-- Sección oculta que se revela y te lleva directo tras apretar el botón de Mercado Pago -->
-        <div id="unlockSection" class="unlock-panel emoji-box" aria-live="polite">
-          <span class="corner-emoji md pos-tl" aria-hidden="true">🔓</span>
-          <span class="corner-emoji md pos-tr" aria-hidden="true">📂</span>
-          <p class="eyebrow">Paso 2 · Descarga habilitada</p>
-          <h3>¡Ya casi tenés tu manual!</h3>
-          <p>
-            Completá tu pago de <strong>$1.000 ARS</strong> en la pestaña de Mercado Pago que se abrió.
-            Una vez acreditado, entrá directo a la carpeta de Google Drive con los dos PDFs:
-          </p>
-          <div class="unlock-actions">
-            <a href="https://drive.google.com/drive/folders/1P3CDmhH_R_TWB1ST8ly1PzI1apKxNaff" target="_blank" rel="noopener" class="btn btn-outline">
-              Abrir carpeta de descarga (2 PDFs)
-            </a>
-            <p class="small muted">
-              ¿Tuviste algún problema con el pago o el acceso? Mandanos tu comprobante por
-              <a href="https://www.instagram.com/lemonbarb3r/" target="_blank" rel="noopener" style="color:var(--indigo); text-decoration:underline;">Instagram (@lemonbarb3r)</a>
-              o a <a href="mailto:contacto@lemonbarb3r.com" style="color:var(--indigo); text-decoration:underline;">contacto@lemonbarb3r.com</a>.
-            </p>
-          </div>
-        </div>
-
-        <div class="steps emoji-box">
+        <div class="steps emoji-box" style="margin-top:32px;">
           <span class="corner-emoji md pos-tr" aria-hidden="true">📩</span>
-          <h3>Cómo recibís los archivos</h3>
+          <h3>Cómo accedés a los archivos</h3>
           <ol>
-            <li>Hacés clic en <strong>Pagar con Mercado Pago</strong> ($1.000 ARS) desde el recuadro de arriba.</li>
-            <li>Al abrirse el pago, se desbloquea automáticamente la sección con el enlace directo a la carpeta de Google Drive para descargar ambos PDF.</li>
-            <li>También podés enviarnos el comprobante por <a href="https://www.instagram.com/lemonbarb3r/" target="_blank" rel="noopener">@lemonbarb3r</a> o a <a href="mailto:contacto@lemonbarb3r.com">contacto@lemonbarb3r.com</a> si necesitás que te lo reenviemos.</li>
+            <li>En las guías de <strong>$1.000 ARS</strong>, tocá <strong>Pagar $1.000 en Mercado Pago</strong> para abrir el pago y habilitar el botón de <strong>Google Drive</strong>.</li>
+            <li>En la guía <strong>10 Errores Que Te Hacen Perder Clientes</strong>, podés abrir directo la descarga <strong>gratis</strong> en Google Drive.</li>
+            <li>Si tenés algún inconveniente con el pago o el acceso, escribinos por <a href="https://www.instagram.com/lemonbarb3r/" target="_blank" rel="noopener">@lemonbarb3r</a> o a <a href="mailto:contacto@lemonbarb3r.com">contacto@lemonbarb3r.com</a>.</li>
           </ol>
         </div>
       </div>
@@ -942,24 +884,24 @@
         <h2 class="center" style="font-size:2.2rem; margin-top:6px;">Preguntas frecuentes</h2>
         <div class="faq">
           <div class="faq-item emoji-box">
-            <span class="corner-emoji sm pos-tr" aria-hidden="true">📄</span>
-            <h3>¿Es un solo PDF o vienen los dos?</h3>
-            <p>Incluye los dos archivos PDF: el manual técnico de 29 páginas y el pack de 11 láminas ilustradas. Todo por $1.000 ARS.</p>
-          </div>
-          <div class="faq-item emoji-box">
-            <span class="corner-emoji sm pos-tr" aria-hidden="true">🖨️</span>
-            <h3>¿Se puede imprimir?</h3>
-            <p>Sí. El manual está diagramado en formato A4 y tanto las láminas como la ficha técnica del cliente están listas para imprimir.</p>
+            <span class="corner-emoji sm pos-tr" aria-hidden="true">⚡</span>
+            <h3>¿Qué incluye Fade Express por $1.000 ARS?</h3>
+            <p>Incluye la guía de Fade Express y, como extra, el PDF de Freestyle con Color.</p>
           </div>
           <div class="faq-item emoji-box">
             <span class="corner-emoji sm pos-tr" aria-hidden="true">🧶</span>
-            <h3>¿Sirve si ya trabajo haciendo dreadlocks, fade o alisados?</h3>
-            <p>Sí, es ideal para estandarizar diagnósticos, revisar calibres de aguja, degradados y tratamientos, y evitar errores frecuentes.</p>
+            <h3>¿Qué incluye el Pack de Locs por $1.000 ARS?</h3>
+            <p>Incluye el Manual Maestro (29 págs), las 11 láminas ilustradas, el nuevo PDF de Locs como extra y también el extra de 10 Errores Que Te Hacen Perder Clientes.</p>
+          </div>
+          <div class="faq-item emoji-box">
+            <span class="corner-emoji sm pos-tr" aria-hidden="true">🎁</span>
+            <h3>¿La guía de 10 Errores es gratis?</h3>
+            <p>Sí, podés acceder a la guía de 10 Errores Que Te Hacen Perder Clientes sin costo desde su tarjeta en la sección de descarga.</p>
           </div>
           <div class="faq-item emoji-box">
             <span class="corner-emoji sm pos-tr" aria-hidden="true">💬</span>
-            <h3>¿Qué pasa si tengo un problema con la descarga?</h3>
-            <p>Si cerraste la pestaña antes de descargar o tenés cualquier falla técnica, escribinos por Instagram (@lemonbarb3r) o por mail con tu comprobante y te pasamos el acceso directo.</p>
+            <h3>¿Qué pasa si tengo un problema con el enlace de Drive?</h3>
+            <p>Si necesitás ayuda con el acceso, escribinos por Instagram (@lemonbarb3r) o por mail a contacto@lemonbarb3r.com.</p>
           </div>
         </div>
       </div>
@@ -1021,28 +963,137 @@
       heroPhoto.src = sources[0];
     })();
 
-    // 2. Desbloqueo de la sección de Drive al pulsar "Pagar con Mercado Pago"
+    // 2. Ofertas y descargas: Fade Express ($1.000 + Extra Freestyle), Pack Locs ($1.000 + Extras) y 10 Errores (Gratis)
     (function () {
-      const mpBtn = document.getElementById('mpPayBtn');
-      const unlockSection = document.getElementById('unlockSection');
-      const STORAGE_KEY = 'lemonbarb3r_mp_clicked';
-
-      function revealUnlock(shouldScroll) {
-        unlockSection.classList.add('visible');
-        if (shouldScroll) {
-          setTimeout(function () {
-            unlockSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }, 250);
+      const PDF_OFFERS = [
+        {
+          id: "fade-express-freestyle",
+          featured: true,
+          isFree: false,
+          badge: "Destacado especial · $1.000 ARS",
+          title: "Fade Express",
+          extraLabel: "Incluye de extra: PDF Freestyle con Color",
+          desc: "Degradados limpios con ritmo ágil de sillón, más la guía extra de Freestyle con Color.",
+          bullets: [
+            "PDF Fade Express: alturas, transiciones y criterio de corte rápido.",
+            "Extra incluido: PDF Freestyle con Color.",
+            "Precio: $1.000 ARS con acceso a Google Drive."
+          ],
+          priceText: "$1.000 <span>ARS</span>",
+          payBtnLabel: "Pagar $1.000 en Mercado Pago",
+          mpUrl: LEMON.mpFadeLink,
+          driveUrl: LEMON.driveFadeLink
+        },
+        {
+          id: "locs-pack-extras",
+          featured: false,
+          isFree: false,
+          badge: "Locs + Extras · $1.000 ARS",
+          title: "Manual Maestro de Locs + 11 Láminas",
+          extraLabel: "Incluye de extra: Nuevo PDF de Locs + Extra 10 Errores",
+          desc: "Manual técnico de 29 páginas y 11 láminas ilustradas, sumando el nuevo PDF de Locs y el extra de 10 Errores.",
+          bullets: [
+            "Manual Maestro (29 págs) + 11 láminas ilustradas.",
+            "Extra: Nuevo PDF de Locs.",
+            "Extra: 10 Errores Que Te Hacen Perder Clientes."
+          ],
+          priceText: "$1.000 <span>ARS</span>",
+          payBtnLabel: "Pagar $1.000 en Mercado Pago",
+          mpUrl: LEMON.mpLocsLink,
+          driveUrl: LEMON.driveLocsLink
+        },
+        {
+          id: "guia-10-errores-gratis",
+          featured: false,
+          isFree: true,
+          badge: "Guía gratis",
+          title: "10 Errores Que Te Hacen Perder Clientes",
+          extraLabel: "Acceso libre y directo en Google Drive",
+          desc: "Guía directa sobre errores de sillón y atención que hacen perder clientes, disponible gratis.",
+          bullets: [
+            "10 errores frecuentes y cómo resolverlos en el día a día.",
+            "Disponible sin costo para descargar en Google Drive."
+          ],
+          priceText: "GRATIS",
+          payBtnLabel: "Descargar gratis en Google Drive",
+          mpUrl: null,
+          driveUrl: LEMON.driveErroresGratisLink
         }
+      ];
+
+      const featuredContainer = document.getElementById("featuredFadeBox");
+      const otherGrid = document.getElementById("otherOffersGrid");
+      if (!featuredContainer || !otherGrid) return;
+
+      const STORAGE_PREFIX = "lemonbarb3r_offer_unlocked_";
+
+      function buildOfferCard(offer, isFeatured) {
+        const card = document.createElement("article");
+        card.className = "card emoji-box";
+        card.style.display = "flex";
+        card.style.flexDirection = "column";
+        card.style.justifyContent = "space-between";
+
+        if (isFeatured) {
+          card.style.border = "2px solid var(--celery)";
+          card.style.background = "linear-gradient(180deg, #241942 0%, #141024 100%)";
+          card.style.boxShadow = "0 16px 46px rgba(176, 38, 255, 0.28), 0 0 24px rgba(166, 194, 97, 0.14)";
+        }
+
+        const isUnlocked = offer.isFree || localStorage.getItem(STORAGE_PREFIX + offer.id) === "1";
+        const bulletsHtml = offer.bullets.map(b => `<li>${b}</li>`).join("");
+
+        const actionHtml = offer.isFree
+          ? `<a href="${offer.driveUrl}" target="_blank" rel="noopener" class="btn btn-celery" style="width:100%; padding:15px 24px; font-size:1.05rem;">
+               ${offer.payBtnLabel}
+             </a>`
+          : `<a href="${offer.mpUrl}" target="_blank" rel="noopener" class="btn btn-primary" data-offer-pay="${offer.id}" style="width:100%;">
+               ${offer.payBtnLabel}
+             </a>
+             <div class="unlock-panel ${isUnlocked ? "visible" : ""}" id="unlock-offer-${offer.id}">
+               <p class="eyebrow">Descarga habilitada</p>
+               <p class="small">Una vez acreditado el pago, entrá a tu carpeta de Google Drive:</p>
+               <a href="${offer.driveUrl}" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:12px; width:100%;">
+                 Abrir Google Drive
+               </a>
+             </div>`;
+
+        card.innerHTML = `
+          <div>
+            ${isFeatured
+              ? `<span class="corner-emoji lg pos-tl" aria-hidden="true">⚡</span><span class="corner-emoji md pos-br" aria-hidden="true">🔥</span>`
+              : `<span class="corner-emoji md pos-tl" aria-hidden="true">${offer.isFree ? "🎁" : "📄"}</span>`}
+            <p class="eyebrow">${offer.badge}</p>
+            <h3 style="${isFeatured ? "font-size:1.95rem; color:var(--celery);" : ""}">${offer.title}</h3>
+            <p style="margin-top:8px; color:var(--indigo); font-weight:600; font-size:0.92rem;">✦ ${offer.extraLabel}</p>
+            <p>${offer.desc}</p>
+            <ul>${bulletsHtml}</ul>
+            <p class="price" style="font-size:${isFeatured ? "2.8rem" : "2.2rem"}; margin-top:20px;">${offer.priceText}</p>
+          </div>
+          <div style="margin-top:22px;">
+            ${actionHtml}
+          </div>
+        `;
+
+        if (!offer.isFree) {
+          const payBtn = card.querySelector(`[data-offer-pay="${offer.id}"]`);
+          const panel = card.querySelector(`#unlock-offer-${offer.id}`);
+          payBtn.addEventListener("click", function () {
+            localStorage.setItem(STORAGE_PREFIX + offer.id, "1");
+            panel.classList.add("visible");
+            panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          });
+        }
+
+        return card;
       }
 
-      if (localStorage.getItem(STORAGE_KEY) === '1' || window.location.hash === '#descarga') {
-        revealUnlock(false);
-      }
-
-      mpBtn.addEventListener('click', function () {
-        localStorage.setItem(STORAGE_KEY, '1');
-        revealUnlock(true);
+      PDF_OFFERS.forEach((offer) => {
+        if (offer.featured) {
+          featuredContainer.appendChild(buildOfferCard(offer, true));
+        } else {
+          otherGrid.appendChild(buildOfferCard(offer, false));
+        }
       });
     })();
 
