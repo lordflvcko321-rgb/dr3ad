@@ -367,6 +367,21 @@
       }
     }
 
+    /* Bloque de Alisados: antes y después uno al lado del otro arriba + proceso más grande abajo */
+    .alisado-showcase {
+      margin-top: 18px;
+      display: grid;
+      gap: 12px;
+    }
+    .alisado-ba-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .alisado-process-row .photo-tile {
+      aspect-ratio: 16 / 10;
+    }
+
     /* Bloque con foto lateral al lado de texto */
     .side-feature {
       display: grid;
@@ -806,7 +821,7 @@
 
         <div class="side-feature">
           <div class="grid-2" style="margin-top:0;">
-            <article class="card emoji-box">
+            <article class="card emoji-box" id="alisadosCard">
               <span class="corner-emoji md pos-tl" aria-hidden="true">✨</span>
               <span class="corner-emoji md pos-br" aria-hidden="true">💧</span>
               <p class="eyebrow">Módulo · Cuidado y fibra</p>
@@ -817,6 +832,11 @@
                 <li>Control de temperatura y tiempos de exposición para evitar rotura y frizz.</li>
                 <li>Protocolos de recuperación y mantenimiento post-tratamiento.</li>
               </ul>
+              <!-- Antes y después uno al lado del otro arriba + proceso más grande abajo -->
+              <div class="alisado-showcase">
+                <div class="alisado-ba-row" id="alisadoBeforeAfterRow"></div>
+                <div class="alisado-process-row" id="alisadoProcessRow"></div>
+              </div>
             </article>
             <article class="card emoji-box" id="fadeCard">
               <span class="corner-emoji md pos-tr" aria-hidden="true">✂️</span>
@@ -987,7 +1007,7 @@
       </div>
       <div class="lightbox-caption">
         <span id="lbTitle">LEMONBARB3R</span>
-        <span class="lightbox-counter" id="lbCounter">1 / 21</span>
+        <span class="lightbox-counter" id="lbCounter">1 / 24</span>
       </div>
     </div>
   </div>
@@ -1166,6 +1186,8 @@
     (function () {
       const galleryGrid = document.getElementById('galleryGrid');
       const stripPalmCrochet = document.getElementById('stripPalmCrochet');
+      const alisadoBeforeAfterRow = document.getElementById('alisadoBeforeAfterRow');
+      const alisadoProcessRow = document.getElementById('alisadoProcessRow');
       const fadeSamplesStrip = document.getElementById('fadeSamplesStrip');
       const sideLargasCortos = document.getElementById('sideLargasCortos');
       const stripCortosSinteticos = document.getElementById('stripCortosSinteticos');
@@ -1194,6 +1216,11 @@
         { base: 'palm_crochet3', title: 'Palm rolling, división y crochet · 03', badge: 'VER', icon: '⚡', target: stripPalmCrochet, src: null },
         { base: 'crochet1', title: 'Crochet · 01', badge: 'VER', icon: '🧶', target: stripPalmCrochet, src: null },
         { base: 'palmroll1', title: 'Palm rolling · Técnica de dreads', badge: 'VER', icon: '🧶', target: stripPalmCrochet, src: null },
+
+        // Sección de alisados: antes y después uno al lado del otro arriba + proceso más grande abajo
+        { base: 'alisadoantes', title: 'Alisado · Antes', badge: 'ANTES', icon: '✨', target: alisadoBeforeAfterRow, src: null },
+        { base: 'alisadodespues', title: 'Alisado · Después', badge: 'DESPUÉS', icon: '💧', target: alisadoBeforeAfterRow, src: null },
+        { base: 'alisado1', title: 'Alisado · Proceso', badge: 'PROCESO', icon: '✨', target: alisadoProcessRow, src: null },
 
         // Sección de fade: fadecorte1 y fadecorte2 como muestra
         { base: 'fadecorte1', title: 'Muestra Fade · 01', badge: 'VER', icon: '✂️', target: fadeSamplesStrip, src: null },
