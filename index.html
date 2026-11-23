@@ -331,6 +331,39 @@
     .card li + li { margin-top: 8px; }
     .card li::marker { color: var(--celery); }
 
+    /* Módulos complementarios separados (Fade arriba, Alisados debajo) */
+    .separated-modules {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      margin-top: 32px;
+    }
+    .module-block {
+      background: linear-gradient(180deg, var(--surface-elevated) 0%, var(--surface) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 26px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+    }
+    .module-block.fade-module {
+      border: 2px solid var(--celery);
+      background: linear-gradient(180deg, #241942 0%, #141024 100%);
+      box-shadow: 0 16px 46px rgba(176, 38, 255, 0.28), 0 0 24px rgba(166, 194, 97, 0.14);
+    }
+    .module-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-top: 18px;
+    }
+    @media (min-width: 768px) {
+      .module-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+      }
+    }
+
     /* Tiras / fotos intercaladas entre secciones o de costado */
     .inline-photos-4 {
       display: grid;
@@ -345,31 +378,22 @@
       }
     }
 
-    /* 5 fotos de dreads: grilla pareja en celular (2 cols + 5.ª a ancho completo) y 5 columnas en escritorio */
-    .inline-photos-5 {
+    /* 6 fotos en sección de palm rolling / dreads: 2 cols en celular, 3 cols en escritorio (2 filas parejas de 3) */
+    .inline-photos-palm {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
       margin-top: 26px;
     }
-    .inline-photos-5 .photo-tile:last-child {
-      grid-column: 1 / -1;
-      aspect-ratio: 16 / 9;
-    }
     @media (min-width: 768px) {
-      .inline-photos-5 {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 14px;
-      }
-      .inline-photos-5 .photo-tile:last-child {
-        grid-column: auto;
-        aspect-ratio: 1 / 1;
+      .inline-photos-palm {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
       }
     }
 
     /* Bloque de Alisados: antes y después uno al lado del otro arriba + proceso más grande abajo */
     .alisado-showcase {
-      margin-top: 18px;
       display: grid;
       gap: 12px;
     }
@@ -382,32 +406,11 @@
       aspect-ratio: 16 / 10;
     }
 
-    /* Bloque con foto lateral al lado de texto */
-    .side-feature {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      align-items: center;
-      margin-top: 28px;
-    }
-    @media (min-width: 768px) {
-      .side-feature {
-        grid-template-columns: 1.35fr 0.85fr;
-        gap: 28px;
-      }
-    }
-    .side-photos-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    /* Muestras de Fade dentro de la sección de Fade */
+    /* Muestras de Fade */
     .fade-samples-strip {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 18px;
+      gap: 14px;
     }
 
     /* Galería principal de modelos (6 fotos) */
@@ -775,7 +778,7 @@
       </div>
     </section>
 
-    <!-- Qué incluye el pack de locs + fotos de palm rolling, división y crochet + palmroll1 -->
+    <!-- Qué incluye el pack de locs + sección de palm rolling / dreads (incluye dreads cortos 03) -->
     <section id="dreads-section" class="section">
       <div class="wrap">
         <p class="eyebrow center">Contenido del pack de locs</p>
@@ -807,55 +810,70 @@
           </article>
         </div>
 
-        <!-- 5 fotos de dreads en grilla pareja -->
-        <div class="inline-photos-5" id="stripPalmCrochet"></div>
+        <!-- Sección de palm rolling y técnicas de dreads (con dreads cortos 03 incluido) -->
+        <div style="margin-top:42px;">
+          <p class="eyebrow center">Palm rolling &amp; técnica de dreads</p>
+          <h3 class="center" style="font-size:1.7rem; margin-top:4px; color:var(--beige);">Palm rolling, división, crochet y dreads cortos</h3>
+          <div class="inline-photos-palm" id="stripPalmCrochet"></div>
+        </div>
       </div>
     </section>
 
-    <!-- Alisados y tratamientos + Técnica de fade con muestras fadecorte1/fadecorte2 y fotos largas y cortos al costado -->
+    <!-- Módulos complementarios: primero Fade Técnicas Express y Detallada, debajo Alisados y Tratamientos (separados) -->
     <section id="tecnicas-extra" class="section">
       <div class="wrap">
         <p class="eyebrow center">Módulos complementarios</p>
-        <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Alisados, tratamientos y fade</h2>
-        <p class="center muted" style="margin-top:10px">Criterio de taller para acompañar procesos capilares, degradados y terminaciones limpias.</p>
+        <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Módulos complementarios</h2>
+        <p class="center muted" style="margin-top:10px">Dos módulos independientes: Fade Técnicas Express y Detallada, y Alisados y Tratamientos.</p>
 
-        <div class="side-feature">
-          <div class="grid-2" style="margin-top:0;">
-            <article class="card emoji-box" id="alisadosCard">
-              <span class="corner-emoji md pos-tl" aria-hidden="true">✨</span>
-              <span class="corner-emoji md pos-br" aria-hidden="true">💧</span>
-              <p class="eyebrow">Módulo · Cuidado y fibra</p>
-              <h3>Alisados y tratamientos</h3>
-              <p>Evaluación del estado de la fibra y el cuero cabelludo antes de aplicar activos alisantes, hidratantes, nutritivos o reconstructores.</p>
-              <ul>
-                <li>Diagnóstico de porosidad, elasticidad y compatibilidad química/térmica.</li>
-                <li>Control de temperatura y tiempos de exposición para evitar rotura y frizz.</li>
-                <li>Protocolos de recuperación y mantenimiento post-tratamiento.</li>
-              </ul>
+        <div class="separated-modules">
+          <!-- Módulo 1: Fade Técnicas Express y Detallada con emojis de cuchillo y barber flotando -->
+          <article class="module-block fade-module emoji-box" id="fadeCard">
+            <span class="corner-emoji lg pos-tl" aria-hidden="true">🔪</span>
+            <span class="corner-emoji lg pos-tr" aria-hidden="true">💈</span>
+            <span class="corner-emoji md pos-bl" aria-hidden="true">💈</span>
+            <span class="corner-emoji md pos-br" aria-hidden="true">🔪</span>
+
+            <p class="eyebrow">Módulo · Degradados y contornos</p>
+            <h3 style="font-size:2rem; color:var(--celery);">Fade Técnicas Express y Detallada</h3>
+            <p>Dominio del degradado ágil de sillón y del trabajo minucioso de sombras, integrando cortes limpios con estructuras generales o zonas de locs.</p>
+
+            <div class="module-grid">
+              <div>
+                <ul>
+                  <li><strong>Técnica Express:</strong> marcación rápida de bases, guías definidas y ritmo eficiente sin perder limpieza.</li>
+                  <li><strong>Técnica Detallada:</strong> pulido milimétrico con guardas y palanca para fundir sombras sin líneas marcadas.</li>
+                  <li><strong>Terminaciones y criterio:</strong> contorno, nuca, patillas e higiene de taller con enfoque profesional.</li>
+                </ul>
+              </div>
+              <div class="fade-samples-strip" id="fadeSamplesStrip"></div>
+            </div>
+          </article>
+
+          <!-- Módulo 2: Alisados y Tratamientos separado debajo -->
+          <article class="module-block emoji-box" id="alisadosCard">
+            <span class="corner-emoji md pos-tl" aria-hidden="true">✨</span>
+            <span class="corner-emoji md pos-br" aria-hidden="true">💧</span>
+
+            <p class="eyebrow">Módulo · Cuidado y fibra</p>
+            <h3 style="font-size:1.95rem;">Alisados y Tratamientos</h3>
+            <p>Evaluación del estado de la fibra y el cuero cabelludo antes de aplicar activos alisantes, hidratantes, nutritivos o reconstructores.</p>
+
+            <div class="module-grid">
+              <div>
+                <ul>
+                  <li>Diagnóstico previo de porosidad, elasticidad y compatibilidad química/térmica.</li>
+                  <li>Control de temperatura y tiempos de exposición para evitar rotura y frizz.</li>
+                  <li>Protocolos de recuperación y mantenimiento post-tratamiento.</li>
+                </ul>
+              </div>
               <!-- Antes y después uno al lado del otro arriba + proceso más grande abajo -->
               <div class="alisado-showcase">
                 <div class="alisado-ba-row" id="alisadoBeforeAfterRow"></div>
                 <div class="alisado-process-row" id="alisadoProcessRow"></div>
               </div>
-            </article>
-            <article class="card emoji-box" id="fadeCard">
-              <span class="corner-emoji md pos-tr" aria-hidden="true">✂️</span>
-              <span class="corner-emoji md pos-bl" aria-hidden="true">⚡</span>
-              <p class="eyebrow">Módulo · Degradados y contornos</p>
-              <h3>Técnica de fade</h3>
-              <p>Construcción de degradados limpios y transiciones graduales, integrando el corte con la estructura general o con zonas de locs.</p>
-              <ul>
-                <li>Marcación de bases, guías y uso progresivo de guardas y palanca.</li>
-                <li>Pulido de sombras sin líneas marcadas ni sobreexposición de piel.</li>
-                <li>Terminaciones en nuca, patillas y contorno con higiene de taller.</li>
-              </ul>
-              <!-- Muestras de fade (fadecorte1 y fadecorte2) -->
-              <div class="fade-samples-strip" id="fadeSamplesStrip"></div>
-            </article>
-          </div>
-
-          <!-- Fotos laterales de dreads largas y dreads cortos -->
-          <div class="side-photos-pair" id="sideLargasCortos"></div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -874,7 +892,7 @@
       </div>
     </section>
 
-    <!-- Para quién es / Lo que no es + fotos de cortos y sintéticos entre bloques -->
+    <!-- Para quién es / Lo que no es + fotos de dreads largas y sintéticos entre bloques -->
     <section class="section">
       <div class="wrap">
         <div class="two-col">
@@ -900,38 +918,28 @@
           </div>
         </div>
 
-        <!-- 1 de dreads cortos + 3 de armado de dreads sintéticos entre bloques -->
-        <div class="inline-photos-4" id="stripCortosSinteticos"></div>
+        <!-- Dreads largas + armado de dreads sintéticos entre bloques -->
+        <div class="inline-photos-4" id="stripLargasSinteticos"></div>
       </div>
     </section>
 
-    <!-- Compra y Descargas: Fade Express ($1.000 + Extra Freestyle), Pack Locs ($1.000 + Extras), Alisados y Tratamientos ($1.000) y 10 Errores (Gratis) -->
+    <!-- Compra y Descargas: Principal = Dreads, Debajo resaltado con emojis = Fade, y los demás debajo -->
     <section id="comprar" class="section">
       <div class="wrap">
         <p class="eyebrow center">Guías y extras · Acceso por Google Drive</p>
         <h2 class="center" style="font-size:2.4rem; margin-top:6px;">Elegí tu guía o descargá gratis</h2>
         <p class="center muted" style="margin-top:10px">
-          Fade Express, Pack de Locs y Alisados y Tratamientos a $1.000 ARS cada uno, y la guía de 10 Errores gratis.
+          Pack de Locs, Fade Express + Freestyle con Color y Alisados y Tratamientos a $1.000 ARS cada uno, y guía de 10 Errores gratis.
         </p>
 
-        <!-- Resumen rápido estilo tienda -->
-        <div class="card emoji-box" style="margin-top:24px; padding:22px 26px; border-color:rgba(166, 194, 97, 0.45);">
-          <span class="corner-emoji sm pos-tr" aria-hidden="true">⚡</span>
-          <p class="eyebrow">Resumen rápido de guías</p>
-          <h3 style="font-size:1.35rem; margin-top:6px;">Todo lo disponible en un vistazo</h3>
-          <ul style="margin-top:12px;">
-            <li><strong>Fade Express ($1.000 ARS):</strong> degradados ágiles de sillón + <strong>extra Freestyle con Color</strong>.</li>
-            <li><strong>Pack Locs ($1.000 ARS):</strong> Manual Maestro + 11 láminas + <strong>extra nuevo PDF de Locs</strong> + <strong>extra 10 Errores</strong>.</li>
-            <li><strong>Alisados y Tratamientos ($1.000 ARS):</strong> diagnóstico de fibra, control térmico y recuperación.</li>
-            <li><strong>10 Errores Que Te Hacen Perder Clientes (GRATIS):</strong> acceso directo en Google Drive.</li>
-          </ul>
-        </div>
+        <!-- 1. Principal: Módulo de Dreads -->
+        <div id="principalDreadsBox" style="margin-top:32px;"></div>
 
-        <!-- Destacado especial: Fade Express ($1.000 ARS) + Extra Freestyle con Color -->
-        <div id="featuredFadeBox" style="margin-top:34px;"></div>
+        <!-- 2. Debajo, bien resaltado con emojis: Módulo de Fade -->
+        <div id="resaltadoFadeBox" style="margin-top:28px;"></div>
 
-        <!-- Pack Locs ($1.000 ARS), Alisados y Tratamientos ($1.000 ARS) y Guía 10 Errores (Gratis) -->
-        <div class="grid-2" id="otherOffersGrid" style="margin-top:28px;"></div>
+        <!-- 3. Los demás debajo: Alisados y Tratamientos + 10 Errores Gratis -->
+        <div class="grid-2" id="demasOffersGrid" style="margin-top:28px;"></div>
 
         <div class="steps emoji-box" style="margin-top:32px;">
           <span class="corner-emoji md pos-tr" aria-hidden="true">📩</span>
@@ -952,14 +960,14 @@
         <h2 class="center" style="font-size:2.2rem; margin-top:6px;">Preguntas frecuentes</h2>
         <div class="faq">
           <div class="faq-item emoji-box">
-            <span class="corner-emoji sm pos-tr" aria-hidden="true">⚡</span>
-            <h3>¿Qué incluye Fade Express por $1.000 ARS?</h3>
-            <p>Incluye la guía de Fade Express y, como extra, el PDF de Freestyle con Color.</p>
-          </div>
-          <div class="faq-item emoji-box">
             <span class="corner-emoji sm pos-tr" aria-hidden="true">🧶</span>
             <h3>¿Qué incluye el Pack de Locs por $1.000 ARS?</h3>
             <p>Incluye el Manual Maestro (29 págs), las 11 láminas ilustradas, el nuevo PDF de Locs como extra y también el extra de 10 Errores Que Te Hacen Perder Clientes.</p>
+          </div>
+          <div class="faq-item emoji-box">
+            <span class="corner-emoji sm pos-tr" aria-hidden="true">🔪</span>
+            <h3>¿Qué incluye Fade Express por $1.000 ARS?</h3>
+            <p>Incluye la guía de Fade Express y, como extra, el PDF de Freestyle con Color.</p>
           </div>
           <div class="faq-item emoji-box">
             <span class="corner-emoji sm pos-tr" aria-hidden="true">✨</span>
@@ -1031,32 +1039,14 @@
       heroPhoto.src = sources[0];
     })();
 
-    // 2. Ofertas y descargas: Fade Express ($1.000 + Extra Freestyle), Pack Locs ($1.000 + Extras), Alisados y Tratamientos ($1.000) y 10 Errores (Gratis)
+    // 2. Ofertas y descargas: 1) Principal = Dreads, 2) Resaltado con emojis = Fade, 3) Los demás debajo
     (function () {
       const PDF_OFFERS = [
         {
-          id: "fade-express-freestyle",
-          featured: true,
-          isFree: false,
-          badge: "Destacado especial · $1.000 ARS",
-          title: "Fade Express",
-          extraLabel: "Incluye de extra: PDF Freestyle con Color",
-          desc: "Degradados limpios con ritmo ágil de sillón, más la guía extra de Freestyle con Color.",
-          bullets: [
-            "PDF Fade Express: alturas, transiciones y criterio de corte rápido.",
-            "Extra incluido: PDF Freestyle con Color.",
-            "Precio: $1.000 ARS con acceso a Google Drive."
-          ],
-          priceText: "$1.000 <span>ARS</span>",
-          payBtnLabel: "Pagar $1.000 en Mercado Pago",
-          mpUrl: LEMON.mpFadeLink,
-          driveUrl: LEMON.driveFadeLink
-        },
-        {
           id: "locs-pack-extras",
-          featured: false,
+          role: "principal-dreads",
           isFree: false,
-          badge: "Locs + Extras · $1.000 ARS",
+          badge: "Módulo principal · Locs + Extras · $1.000 ARS",
           title: "Manual Maestro de Locs + 11 Láminas",
           extraLabel: "Incluye de extra: Nuevo PDF de Locs + Extra 10 Errores",
           desc: "Manual técnico de 29 páginas y 11 láminas ilustradas, sumando el nuevo PDF de Locs y el extra de 10 Errores.",
@@ -1071,8 +1061,26 @@
           driveUrl: LEMON.driveLocsLink
         },
         {
+          id: "fade-express-freestyle",
+          role: "resaltado-fade",
+          isFree: false,
+          badge: "Resaltado · Fade + Extra Freestyle · $1.000 ARS",
+          title: "Fade Express",
+          extraLabel: "Incluye de extra: PDF Freestyle con Color",
+          desc: "Degradados limpios con ritmo ágil de sillón, más la guía extra de Freestyle con Color.",
+          bullets: [
+            "PDF Fade Express: alturas, transiciones y criterio de corte rápido.",
+            "Extra incluido: PDF Freestyle con Color.",
+            "Precio: $1.000 ARS con acceso a Google Drive."
+          ],
+          priceText: "$1.000 <span>ARS</span>",
+          payBtnLabel: "Pagar $1.000 en Mercado Pago",
+          mpUrl: LEMON.mpFadeLink,
+          driveUrl: LEMON.driveFadeLink
+        },
+        {
           id: "alisados-tratamientos",
-          featured: false,
+          role: "demas",
           isFree: false,
           badge: "Cuidado y fibra · $1.000 ARS",
           title: "Alisados y Tratamientos",
@@ -1089,7 +1097,7 @@
         },
         {
           id: "guia-10-errores-gratis",
-          featured: false,
+          role: "demas",
           isFree: true,
           badge: "Guía gratis",
           title: "10 Errores Que Te Hacen Perder Clientes",
@@ -1106,20 +1114,28 @@
         }
       ];
 
-      const featuredContainer = document.getElementById("featuredFadeBox");
-      const otherGrid = document.getElementById("otherOffersGrid");
-      if (!featuredContainer || !otherGrid) return;
+      const principalBox = document.getElementById("principalDreadsBox");
+      const resaltadoFadeBox = document.getElementById("resaltadoFadeBox");
+      const demasGrid = document.getElementById("demasOffersGrid");
+      if (!principalBox || !resaltadoFadeBox || !demasGrid) return;
 
       const STORAGE_PREFIX = "lemonbarb3r_offer_unlocked_";
 
-      function buildOfferCard(offer, isFeatured) {
+      function buildOfferCard(offer) {
         const card = document.createElement("article");
         card.className = "card emoji-box";
         card.style.display = "flex";
         card.style.flexDirection = "column";
         card.style.justifyContent = "space-between";
 
-        if (isFeatured) {
+        const isPrincipal = offer.role === "principal-dreads";
+        const isFadeResaltado = offer.role === "resaltado-fade";
+
+        if (isPrincipal) {
+          card.style.border = "2px solid var(--indigo)";
+          card.style.background = "linear-gradient(180deg, #21173E 0%, #141024 100%)";
+          card.style.boxShadow = "0 16px 46px rgba(124, 58, 237, 0.34)";
+        } else if (isFadeResaltado) {
           card.style.border = "2px solid var(--celery)";
           card.style.background = "linear-gradient(180deg, #241942 0%, #141024 100%)";
           card.style.boxShadow = "0 16px 46px rgba(176, 38, 255, 0.28), 0 0 24px rgba(166, 194, 97, 0.14)";
@@ -1143,17 +1159,37 @@
                </a>
              </div>`;
 
+        let emojisHtml = `<span class="corner-emoji md pos-tl" aria-hidden="true">${offer.isFree ? "🎁" : "📄"}</span>`;
+        if (isPrincipal) {
+          emojisHtml = `
+            <span class="corner-emoji lg pos-tl" aria-hidden="true">🧶</span>
+            <span class="corner-emoji md pos-tr" aria-hidden="true">📋</span>
+            <span class="corner-emoji md pos-br" aria-hidden="true">💜</span>
+          `;
+        } else if (isFadeResaltado) {
+          emojisHtml = `
+            <span class="corner-emoji lg pos-tl" aria-hidden="true">🔪</span>
+            <span class="corner-emoji lg pos-tr" aria-hidden="true">💈</span>
+            <span class="corner-emoji md pos-bl" aria-hidden="true">💈</span>
+            <span class="corner-emoji md pos-br" aria-hidden="true">🔪</span>
+          `;
+        }
+
+        const titleStyle = isPrincipal
+          ? "font-size:2rem; color:var(--beige);"
+          : isFadeResaltado
+            ? "font-size:1.95rem; color:var(--celery);"
+            : "";
+
         card.innerHTML = `
           <div>
-            ${isFeatured
-              ? `<span class="corner-emoji lg pos-tl" aria-hidden="true">⚡</span><span class="corner-emoji md pos-br" aria-hidden="true">🔥</span>`
-              : `<span class="corner-emoji md pos-tl" aria-hidden="true">${offer.isFree ? "🎁" : "📄"}</span>`}
+            ${emojisHtml}
             <p class="eyebrow">${offer.badge}</p>
-            <h3 style="${isFeatured ? "font-size:1.95rem; color:var(--celery);" : ""}">${offer.title}</h3>
+            <h3 style="${titleStyle}">${offer.title}</h3>
             <p style="margin-top:8px; color:var(--indigo); font-weight:600; font-size:0.92rem;">✦ ${offer.extraLabel}</p>
             <p>${offer.desc}</p>
             <ul>${bulletsHtml}</ul>
-            <p class="price" style="font-size:${isFeatured ? "2.8rem" : "2.2rem"}; margin-top:20px;">${offer.priceText}</p>
+            <p class="price" style="font-size:${(isPrincipal || isFadeResaltado) ? "2.8rem" : "2.2rem"}; margin-top:20px;">${offer.priceText}</p>
           </div>
           <div style="margin-top:22px;">
             ${actionHtml}
@@ -1174,23 +1210,24 @@
       }
 
       PDF_OFFERS.forEach((offer) => {
-        if (offer.featured) {
-          featuredContainer.appendChild(buildOfferCard(offer, true));
+        if (offer.role === "principal-dreads") {
+          principalBox.appendChild(buildOfferCard(offer));
+        } else if (offer.role === "resaltado-fade") {
+          resaltadoFadeBox.appendChild(buildOfferCard(offer));
         } else {
-          otherGrid.appendChild(buildOfferCard(offer, false));
+          demasGrid.appendChild(buildOfferCard(offer));
         }
       });
     })();
 
-    // 3. Galería principal (modelo1..modelo6) + fotos distribuidas en distintas zonas de la web + Lightbox
+    // 3. Galería principal (modelo1..modelo6) + fotos distribuidas + Lightbox
     (function () {
       const galleryGrid = document.getElementById('galleryGrid');
       const stripPalmCrochet = document.getElementById('stripPalmCrochet');
       const alisadoBeforeAfterRow = document.getElementById('alisadoBeforeAfterRow');
       const alisadoProcessRow = document.getElementById('alisadoProcessRow');
       const fadeSamplesStrip = document.getElementById('fadeSamplesStrip');
-      const sideLargasCortos = document.getElementById('sideLargasCortos');
-      const stripCortosSinteticos = document.getElementById('stripCortosSinteticos');
+      const stripLargasSinteticos = document.getElementById('stripLargasSinteticos');
 
       const lightbox = document.getElementById('lightbox');
       const lbContent = document.getElementById('lbContent');
@@ -1210,33 +1247,31 @@
         { base: 'modelo5', title: 'Modelos · 05', badge: '05 · VER', icon: '💜', target: galleryGrid, src: null },
         { base: 'modelo6', title: 'Modelos · 06', badge: '06 · VER', icon: '💜', target: galleryGrid, src: null },
 
-        // Sección de dreads: palm rolling, división, crochet + palmroll1
+        // Sección de palm rolling / dreads (incluye dreads cortos 03)
         { base: 'palm_crochet1', title: 'Palm rolling, división y crochet · 01', badge: 'VER', icon: '⚡', target: stripPalmCrochet, src: null },
         { base: 'palm_crochet2', title: 'Palm rolling, división y crochet · 02', badge: 'VER', icon: '⚡', target: stripPalmCrochet, src: null },
         { base: 'palm_crochet3', title: 'Palm rolling, división y crochet · 03', badge: 'VER', icon: '⚡', target: stripPalmCrochet, src: null },
         { base: 'crochet1', title: 'Crochet · 01', badge: 'VER', icon: '🧶', target: stripPalmCrochet, src: null },
         { base: 'palmroll1', title: 'Palm rolling · Técnica de dreads', badge: 'VER', icon: '🧶', target: stripPalmCrochet, src: null },
+        { base: 'cortos3', title: 'Dreads cortos · 03', badge: 'CORTOS 03', icon: '✂️', target: stripPalmCrochet, src: null },
 
-        // Sección de alisados: antes y después uno al lado del otro arriba + proceso más grande abajo
+        // Módulo de Fade Técnicas Express y Detallada: fadecorte1 y fadecorte2
+        { base: 'fadecorte1', title: 'Fade Express y Detallada · 01', badge: 'VER', icon: '🔪', target: fadeSamplesStrip, src: null },
+        { base: 'fadecorte2', title: 'Fade Express y Detallada · 02', badge: 'VER', icon: '💈', target: fadeSamplesStrip, src: null },
+
+        // Módulo de Alisados y Tratamientos: antes y después lado a lado arriba + proceso más grande abajo
         { base: 'alisadoantes', title: 'Alisado · Antes', badge: 'ANTES', icon: '✨', target: alisadoBeforeAfterRow, src: null },
         { base: 'alisadodespues', title: 'Alisado · Después', badge: 'DESPUÉS', icon: '💧', target: alisadoBeforeAfterRow, src: null },
         { base: 'alisado1', title: 'Alisado · Proceso', badge: 'PROCESO', icon: '✨', target: alisadoProcessRow, src: null },
 
-        // Sección de fade: fadecorte1 y fadecorte2 como muestra
-        { base: 'fadecorte1', title: 'Muestra Fade · 01', badge: 'VER', icon: '✂️', target: fadeSamplesStrip, src: null },
-        { base: 'fadecorte2', title: 'Muestra Fade · 02', badge: 'VER', icon: '⚡', target: fadeSamplesStrip, src: null },
-
-        // 2 dreads largas + 2 dreads cortos al costado en la sección de técnicas
-        { base: 'largas1', title: 'Dreads largas · 01', badge: 'VER', icon: '✨', target: sideLargasCortos, src: null },
-        { base: 'largas2', title: 'Dreads largas · 02', badge: 'VER', icon: '✨', target: sideLargasCortos, src: null },
-        { base: 'cortos1', title: 'Dreads cortos · 01', badge: 'VER', icon: '✂️', target: sideLargasCortos, src: null },
-        { base: 'cortos2', title: 'Dreads cortos · 02', badge: 'VER', icon: '✂️', target: sideLargasCortos, src: null },
-
-        // 1 dreads cortos restante + 3 armado de dreads sintéticos entre bloques de para quién es / lo que no es
-        { base: 'cortos3', title: 'Dreads cortos · 03', badge: 'VER', icon: '✂️', target: stripCortosSinteticos, src: null },
-        { base: 'sinteticos1', title: 'Dreads sintéticos · 01', badge: 'VER', icon: '🎨', target: stripCortosSinteticos, src: null },
-        { base: 'sinteticos2', title: 'Dreads sintéticos · 02', badge: 'VER', icon: '🎨', target: stripCortosSinteticos, src: null },
-        { base: 'sinteticos3', title: 'Dreads sintéticos · 03', badge: 'VER', icon: '🎨', target: stripCortosSinteticos, src: null }
+        // Dreads largas + dreads cortos + sintéticos entre bloques
+        { base: 'largas1', title: 'Dreads largas · 01', badge: 'VER', icon: '✨', target: stripLargasSinteticos, src: null },
+        { base: 'largas2', title: 'Dreads largas · 02', badge: 'VER', icon: '✨', target: stripLargasSinteticos, src: null },
+        { base: 'cortos1', title: 'Dreads cortos · 01', badge: 'VER', icon: '✂️', target: stripLargasSinteticos, src: null },
+        { base: 'cortos2', title: 'Dreads cortos · 02', badge: 'VER', icon: '✂️', target: stripLargasSinteticos, src: null },
+        { base: 'sinteticos1', title: 'Dreads sintéticos · 01', badge: 'VER', icon: '🎨', target: stripLargasSinteticos, src: null },
+        { base: 'sinteticos2', title: 'Dreads sintéticos · 02', badge: 'VER', icon: '🎨', target: stripLargasSinteticos, src: null },
+        { base: 'sinteticos3', title: 'Dreads sintéticos · 03', badge: 'VER', icon: '🎨', target: stripLargasSinteticos, src: null }
       ];
 
       let currentIndex = 0;
